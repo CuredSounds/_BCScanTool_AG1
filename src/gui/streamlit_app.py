@@ -137,6 +137,28 @@ with st.sidebar:
                 except Exception as e:
                     st.error(f"Connection error: {e}")
 
+    st.markdown("---")
+    st.subheader("Vehicle Maintenance")
+    repair_desc = st.text_input("Repair Description", placeholder="e.g., Replaced Cylinder 1 Spark Plug")
+    if st.button("Log Repair & Reset Baseline", use_container_width=True):
+        if repair_desc:
+            with st.spinner("Logging repair..."):
+                try:
+                    res = requests.post(f"{API_BASE_URL}/repairs", json={
+                        "vin": selected_vin,
+                        "description": repair_desc
+                    })
+                    if res.status_code == 200:
+                        st.success("Repair logged! Baseline reset.")
+                        st.cache_data.clear()
+                        st.rerun()
+                    else:
+                        st.error(f"Failed to log repair: {res.text}")
+                except Exception as e:
+                    st.error(f"Connection error: {e}")
+        else:
+            st.warning("Please enter a repair description.")
+
 # Main Content
 diag_data = fetch_diagnostics(selected_vin)
 

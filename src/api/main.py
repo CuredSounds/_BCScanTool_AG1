@@ -12,6 +12,10 @@ import requests
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
 
+from src.core.database import SessionLocal, Vehicle, RepairLog, init_db
+from datetime import datetime
+from sqlalchemy import desc
+
 from src import config
 from src.core.diagnostic_engine import DiagnosticEngine
 from src.core.predictive_analytics import PredictiveAnalytics
@@ -117,9 +121,37 @@ def get_vehicle_diagnostics(vin: str):
     if df.empty:
         raise HTTPException(status_code=404, detail="No diagnostic data found")
     
-    vehicle_data = df[df['vin'] == vin]
+    vehicle_data = df[df['vin'] == vin].copy()
     if vehicle_data.empty:
         raise HTTPException(status_code=404, detail=f"No data for VIN {vin}")
+        
+    # --- DATA SEGMENTATION: Apply Repair Log Filter ---
+    db = SessionLocal()
+    try:
+        vehicle = db.query(Vehicle).filter(Vehicle.vin == vin).first()
+        if vehicle:
+            latest_repair = db.query(RepairLog).filter(RepairLog.vehicle_id == vehicle.id).order_by(desc(RepairLog.date)).first()
+            if latest_repair and 'test_time_dt' in vehicle_data.columns:
+                vehicle_data['test_time_dt'] = pd.to_datetime(vehicle_data['test_time_dt'])
+                vehicle_data = vehicle_data[vehicle_data['test_time_dt'] > latest_repair.date]
+                if vehicle_data.empty:
+                    # In a real app we might just return "Healthy since repair" instead of 404
+                    # But for now we just log it. 
+                    pass
+    finally:
+        db.close()
+    
+    # If filtered out everything, return a basic response indicating healthy since repair
+    if vehicle_data.empty:
+        return {
+            "vin": vin,
+            "health_score": 100,
+            "health_grade": "A",
+            "health_status": "Excellent",
+            "issues": [{"severity": "INFO", "issue": "Repaired", "details": "Vehicle was recently repaired. No new data yet."}],
+            "predictions": [],
+            "scans_count": 0
+        }
     
     # Run diagnostic engine
     diag_engine = DiagnosticEngine(None, vehicle_data)
@@ -213,6 +245,36 @@ def get_vehicle_diagnostics(vin: str):
         "predictions": predictions,
         "scans_count": len(vehicle_data)
     }
+
+class RepairLogRequest(BaseModel):
+    vin: str
+    description: str
+
+@app.post("/api/repairs")
+def log_repair(request: RepairLogRequest):
+    """Log a repair to reset the AI baseline."""
+    db = SessionLocal()
+    try:
+        vehicle = db.query(Vehicle).filter(Vehicle.vin == request.vin).first()
+        if not vehicle:
+            vehicle = Vehicle(vin=request.vin, make="Unknown", model="Unknown", year=0)
+            db.add(vehicle)
+            db.commit()
+            db.refresh(vehicle)
+            
+        repair = RepairLog(
+            vehicle_id=vehicle.id,
+            description=request.description,
+            date=datetime.utcnow()
+        )
+        db.add(repair)
+        db.commit()
+        return {"status": "success", "message": f"Repair logged for {request.vin}: {request.description}"}
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
 
 class ChatRequest(BaseModel):
     message: str

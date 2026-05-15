@@ -27,6 +27,7 @@ class Vehicle(Base):
     # Relationships
     scans = relationship("DiagnosticScan", back_populates="vehicle", cascade="all, delete-orphan")
     predictions = relationship("MLPrediction", back_populates="vehicle", cascade="all, delete-orphan")
+    repairs = relationship("RepairLog", back_populates="vehicle", cascade="all, delete-orphan")
 
 class DiagnosticScan(Base):
     __tablename__ = 'diagnostic_scans'
@@ -59,6 +60,17 @@ class MLPrediction(Base):
     
     # Relationships
     vehicle = relationship("Vehicle", back_populates="predictions")
+
+class RepairLog(Base):
+    __tablename__ = 'repair_logs'
+    
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    vehicle_id = Column(Integer, ForeignKey('vehicles.id'), nullable=False)
+    date = Column(DateTime, default=datetime.utcnow, index=True)
+    description = Column(String)
+    
+    # Relationships
+    vehicle = relationship("Vehicle", back_populates="repairs")
 
 # --- DATABASE SETUP ---
 
