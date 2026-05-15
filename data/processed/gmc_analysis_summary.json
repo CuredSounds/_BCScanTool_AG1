@@ -1,0 +1,120 @@
+{
+  "vehicle": "GMC Yukon",
+  "vehicle_type": "gmc",
+  "total_sessions": 16,
+  "total_samples": 8424,
+  "sessions": [
+    {
+      "filename": "GM_989347712041_20260314080930_clean",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 162,
+      "columns": 59
+    },
+    {
+      "filename": "GM_989347712041_20260314142427_clean",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 1253,
+      "columns": 35
+    },
+    {
+      "filename": "GM_989347712041_20260314083419.x431",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 31,
+      "columns": 17
+    },
+    {
+      "filename": "GM_989347712041_20260314085627.x431",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 603,
+      "columns": 53
+    },
+    {
+      "filename": "GM_989347712041_20260314142427.x431",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 1253,
+      "columns": 35
+    },
+    {
+      "filename": "GM_989347712041_20260314102720_clean",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 1206,
+      "columns": 33
+    },
+    {
+      "filename": "GM_989347712041_20260314082915_clean",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 599,
+      "columns": 59
+    },
+    {
+      "filename": "GM_989347712041_20260314142055_clean",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 305,
+      "columns": 59
+    },
+    {
+      "filename": "GM_989347712041_20260314142055.x431",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 305,
+      "columns": 59
+    },
+    {
+      "filename": "GM_989347712041_20260314085627_clean",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 603,
+      "columns": 53
+    },
+    {
+      "filename": "GM_989347712041_20260314080930.x431",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 162,
+      "columns": 59
+    },
+    {
+      "filename": "GM_989347712041_20260314102720.x431",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 1206,
+      "columns": 33
+    },
+    {
+      "filename": "GM_989347712041_20260314142316_clean",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 53,
+      "columns": 33
+    },
+    {
+      "filename": "GM_989347712041_20260314142316.x431",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 53,
+      "columns": 33
+    },
+    {
+      "filename": "GM_989347712041_20260314083419_clean",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 31,
+      "columns": 17
+    },
+    {
+      "filename": "GM_989347712041_20260314082915.x431",
+      "date": "98934771",
+      "label": "unlabeled",
+      "rows": 599,
+      "columns": 59
+    }
+  ]
+}

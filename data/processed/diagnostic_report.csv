@@ -1,0 +1,850 @@
+severity,category,issue,details,recommendation,source
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 542 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251022201306_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±307 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251022201306_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251022201306_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 281 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251022201306_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±338 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251022201306_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 65°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251022201306_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 373°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251022201306_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 47°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251022201306_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251022201306_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 1497°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251022201306_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 22 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251022201306_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 13°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251022201306_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±62 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251201181151_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201181151_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±74 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251201181151_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 80°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201181151_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201181151_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 54°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201181151_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201181151_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2396°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251201181151_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 66 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251201181151_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201181151_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103172159_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 76°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172159_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172159_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172159_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172159_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2375°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103172159_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172159_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251127123053_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 73°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127123053_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127123053_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: -1°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127123053_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127123053_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2425°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251127123053_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 32 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251127123053_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127123053_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251127122922_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 73°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127122922_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127122922_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: -1°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127122922_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127122922_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2439°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251127122922_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127122922_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201180024_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 44°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180024_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180024_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 1°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180024_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180024_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3098°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251201180024_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 139 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251201180024_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180024_clean.csv
+WARNING,Engine Performance,High Idle RPM,Average idle RPM: 908 (expected 650-800),"Check for vacuum leaks, throttle position sensor, or idle air control valve",TOYOTA_989347712041_20251201203733_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±81 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251201203733_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201203733_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±277 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251201203733_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 14 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251201203733_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 68°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201203733_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201203733_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201203733_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201203733_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2670°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251201203733_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 72 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251201203733_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201203733_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251127120140_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 59°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127120140_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127120140_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: -1°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127120140_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127120140_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2433°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251127120140_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 322 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251127120140_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 18°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127120140_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260126145617_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 37 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260126145617_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 30 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260126145617_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 79°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126145617_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 61°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126145617_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 68°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126145617_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126145617_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 4474°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20260126145617_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 2075 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20260126145617_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 20°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126145617_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201180609_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 63°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180609_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180609_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 54°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180609_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180609_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2764°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251201180609_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 146 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251201180609_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180609_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251127122721_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251127122721_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 72°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127122721_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127122721_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: -0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127122721_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127122721_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 1352°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251127122721_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 6 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251127122721_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 11°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127122721_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251209205834_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 81°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209205834_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209205834_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 3°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209205834_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209205834_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2341°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251209205834_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 408 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251209205834_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209205834_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251220140902_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 27°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220140902_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220140902_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 4°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220140902_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220140902_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2594°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251220140902_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 232 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251220140902_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 17°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220140902_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260120104832_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260120104832_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: -8°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120104832_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120104832_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: -4°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120104832_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120104832_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3096°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20260120104832_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 8°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120104832_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260120113343_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 555 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260120113343_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±224 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20260120113343_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 15 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260120113343_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 28 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260120113343_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 77°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120113343_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120113343_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 61°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120113343_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120113343_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2579°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20260120113343_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 989 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20260120113343_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120113343_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 249 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251223215716_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±338 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251223215716_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251223215716_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 385 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251223215716_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±326 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251223215716_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 79°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215716_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215716_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 71°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215716_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215716_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 1197°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251223215716_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 29 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251223215716_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215716_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103172236_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 76°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172236_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172236_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172236_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172236_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2397°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103172236_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 21 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103172236_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172236_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103170719_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 70°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170719_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170719_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170719_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170719_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2558°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103170719_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 29 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103170719_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170719_clean.csv
+WARNING,Engine Performance,High Idle RPM,Average idle RPM: 948 (expected 650-800),"Check for vacuum leaks, throttle position sensor, or idle air control valve",TOYOTA_989347712041_20251223214108_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251223214108_clean.csv
+WARNING,Engine Performance,High Idle RPM,Average idle RPM: 911 (expected 650-800),"Check for vacuum leaks, throttle position sensor, or idle air control valve",TOYOTA_989347712041_20251223214108_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 65°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214108_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214108_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 42°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214108_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214108_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2619°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251223214108_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 87 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251223214108_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214108_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±58 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20260120104845_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260120104845_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±72 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20260120104845_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 6 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260120104845_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 6 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260120104845_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 50°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120104845_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120104845_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: -11°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120104845_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120104845_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3039°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20260120104845_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 1071 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20260120104845_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120104845_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±125 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251109130103_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251109130103_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±256 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251109130103_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 25 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251109130103_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 30 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251109130103_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 72°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109130103_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 1°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109130103_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109130103_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109130103_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3735°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251109130103_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 1296 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251109130103_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109130103_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103172117_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 75°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172117_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172117_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172117_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172117_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2374°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103172117_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 9 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103172117_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172117_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103170257_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 52°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170257_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170257_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170257_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170257_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2906°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103170257_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 57 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103170257_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170257_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103173020_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 28 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103173020_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±146 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251103173020_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 75°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103173020_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103173020_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 51°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103173020_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103173020_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 1674°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103173020_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 22 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103173020_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103173020_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201203442_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 11 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251201203442_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 63°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201203442_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201203442_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201203442_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201203442_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2878°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251201203442_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 141 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251201203442_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201203442_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260120125129_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±272 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20260120125129_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 38 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260120125129_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 42 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260120125129_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 80°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120125129_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120125129_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3881°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20260120125129_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 2068 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20260120125129_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 22°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120125129_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251028120111_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 60 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251028120111_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 42 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251028120111_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 78°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028120111_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 762°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251028120111_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 79°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028120111_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028120111_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 5798°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251028120111_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 7446 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251028120111_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028120111_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251220142351_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 77°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220142351_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220142351_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 4°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220142351_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220142351_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2296°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251220142351_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 10 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251220142351_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220142351_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103171226_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 68°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171226_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171226_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 11°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171226_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171226_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 1935°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103171226_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 51 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103171226_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 17°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171226_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251223214348_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±64 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251223214348_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 74°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214348_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214348_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 42°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214348_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214348_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2416°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251223214348_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 55 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251223214348_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214348_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251028105043_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 19 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251028105043_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 16 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251028105043_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 73°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028105043_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 602°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251028105043_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 70°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028105043_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028105043_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3967°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251028105043_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 736 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251028105043_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 19°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028105043_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251127121913_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 70°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127121913_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127121913_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: -1°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127121913_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127121913_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2457°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251127121913_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 11 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251127121913_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127121913_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103170028_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3207°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103170028_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±74 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251209204833_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251209204833_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±68 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251209204833_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 69°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209204833_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209204833_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 3°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209204833_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209204833_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2483°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251209204833_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 179 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251209204833_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209204833_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103171959_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 74°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171959_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171959_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171959_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171959_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2378°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103171959_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 7 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103171959_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171959_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251028105656_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 67 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251028105656_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 57 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251028105656_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 77°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028105656_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 675°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251028105656_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 77°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028105656_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028105656_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 5744°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251028105656_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 7966 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251028105656_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028105656_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260107134236_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260107134236_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260107134236_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260107134236_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260107134236_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260107134236_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260107134236_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260107134236_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260107134236_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251223215318_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 80°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215318_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215318_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 42°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215318_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215318_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2393°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251223215318_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 41 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251223215318_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215318_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251109132018_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 11 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251109132018_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 10 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251109132018_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 74°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109132018_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 7°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109132018_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 73°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109132018_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109132018_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 4225°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251109132018_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 602 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251109132018_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109132018_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224000438_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 71°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000438_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000438_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 36°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000438_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000438_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2552°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251224000438_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 26 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251224000438_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000438_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251024151339good_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 409 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251024151339good_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±381 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251024151339good_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 17 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251024151339good_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 24 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251024151339good_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 66°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251024151339good_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 443°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251024151339good_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 49°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251024151339good_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251024151339good_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 4349°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251024151339good_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 576 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251024151339good_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 19°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251024151339good_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±92 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20260120121656_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260120121656_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 490 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260120121656_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±323 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20260120121656_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 15 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260120121656_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 18 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260120121656_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 77°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120121656_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 15°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120121656_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 69°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120121656_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120121656_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3104°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20260120121656_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 605 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20260120121656_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 20°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120121656_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103171858_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 74°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171858_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171858_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171858_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171858_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2393°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103171858_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 15 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103171858_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171858_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224000329_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 399 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224000329_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±400 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251224000329_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 69°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000329_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000329_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 24°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000329_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000329_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 1724°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251224000329_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 20 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251224000329_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000329_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±111 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251220141620_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251220141620_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 564 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251220141620_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±270 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251220141620_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 14 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251220141620_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 69°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220141620_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220141620_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 4°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220141620_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220141620_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3079°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251220141620_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 399 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251220141620_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220141620_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±83 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251201204111_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201204111_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±82 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251201204111_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 74°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201204111_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201204111_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201204111_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201204111_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2418°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251201204111_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 73 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251201204111_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201204111_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103170939_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 73°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170939_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170939_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170939_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170939_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2328°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103170939_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 29 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103170939_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170939_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251018170040_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 91 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251018170040_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 37 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251018170040_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 81°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251018170040_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 445°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251018170040_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 83°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251018170040_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251018170040_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 5440°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251018170040_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 5169 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251018170040_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 20°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251018170040_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±151 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20260120112037_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260120112037_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±201 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20260120112037_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 68°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120112037_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120112037_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 58°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120112037_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120112037_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2333°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20260120112037_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 230 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20260120112037_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 20°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120112037_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201175840_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 26°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201175840_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201175840_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 1°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201175840_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201175840_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3200°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251201175840_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 139 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251201175840_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201175840_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±144 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251022193104_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251022193104_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±206 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251022193104_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 73°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251022193104_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 452°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251022193104_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 54°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251022193104_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251022193104_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2328°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251022193104_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 198 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251022193104_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 20°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251022193104_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251109121129_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 22°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109121129_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109121129_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 6°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109121129_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109121129_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2688°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251109121129_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 207 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251109121129_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 17°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251109121129_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251223214826_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 78°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214826_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214826_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 42°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214826_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214826_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2375°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251223214826_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 14 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251223214826_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214826_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224003155_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 83°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003155_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003155_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 36°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003155_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003155_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2455°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251224003155_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 6 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251224003155_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003155_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±57 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251220141425_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251220141425_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 326 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251220141425_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±328 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251220141425_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 15 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251220141425_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 59°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220141425_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220141425_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 4°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220141425_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220141425_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3286°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251220141425_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 199 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251220141425_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220141425_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251209204039_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 24°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209204039_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209204039_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 3°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209204039_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209204039_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2758°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251209204039_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 304 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251209204039_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 18°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251209204039_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260107134353 startup_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260107134353 startup_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 7°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260107134353 startup_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260107134353 startup_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 6°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260107134353 startup_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260107134353 startup_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2811°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20260107134353 startup_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 63 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20260107134353 startup_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260107134353 startup_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±55 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251224000952_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224000952_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±148 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251224000952_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 18 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251224000952_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 16 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251224000952_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 80°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000952_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000952_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 36°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000952_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000952_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2451°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251224000952_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 317 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251224000952_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224000952_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103170557_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 67°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170557_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170557_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170557_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170557_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2668°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103170557_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 17 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103170557_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170557_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260120115005_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 16 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260120115005_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 15 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260120115005_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 82°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120115005_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 7°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120115005_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 61°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120115005_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120115005_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 5319°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20260120115005_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 1579 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20260120115005_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 22°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120115005_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103172406 ac_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 75°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172406 ac_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172406 ac_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172406 ac_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172406 ac_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2430°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103172406 ac_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 7 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103172406 ac_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103172406 ac_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 81°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260107141822_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260107141822_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260107141822_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103165921_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103165921_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103165921_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 13°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103165921_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103165921_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 9°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103165921_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103165921_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2722°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103165921_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 79 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103165921_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103165921_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103171123_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 74°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171123_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171123_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171123_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171123_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2347°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103171123_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171123_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201204423_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 6 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251201204423_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 80°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201204423_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201204423_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201204423_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201204423_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2367°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251201204423_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 67 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251201204423_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201204423_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103170104_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 34°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170104_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170104_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 10°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170104_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170104_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2177°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103170104_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 94 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103170104_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 15°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170104_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251107210711_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 60°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251107210711_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251107210711_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251107210711_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251107210711_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2810°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251107210711_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 6 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251107210711_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251107210711_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201175704_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201175704_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 5°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201175704_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201175704_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201175704_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201175704_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3233°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251201175704_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 130 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251201175704_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 15°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201175704_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260126135141_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 30 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260126135141_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 21 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260126135141_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 62°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126135141_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 42°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126135141_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: -10°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126135141_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126135141_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 4126°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20260126135141_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 2826 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20260126135141_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 22°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126135141_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201202950_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 37°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201202950_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201202950_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 18°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201202950_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201202950_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2472°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251201202950_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 260 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251201202950_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 18°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201202950_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251223213800_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 46°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223213800_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223213800_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 35°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223213800_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223213800_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2378°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251223213800_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 185 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251223213800_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 17°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223213800_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±231 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251022181405_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251022181405_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 520 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251022181405_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±306 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251022181405_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 68°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251022181405_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 423°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251022181405_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 8°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251022181405_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251022181405_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2023°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251022181405_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 44 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251022181405_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 18°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251022181405_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260126135122_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260126135122_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: -7°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126135122_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 24°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126135122_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: -3°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126135122_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126135122_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2246°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20260126135122_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 6°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260126135122_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251127121151_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 7 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251127121151_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 8 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251127121151_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 70°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127121151_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127121151_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: -1°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127121151_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127121151_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2198°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251127121151_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 122 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251127121151_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 19°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251127121151_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103170437_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 61°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170437_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170437_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170437_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170437_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2758°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103170437_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 40 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251103170437_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103170437_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251223215016_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 78°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215016_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215016_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 42°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215016_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215016_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2370°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251223215016_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 22 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251223215016_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215016_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 1 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251224003315_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251223214655_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 76°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214655_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214655_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 42°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214655_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214655_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2342°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251223214655_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 9 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251223214655_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223214655_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 71°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251124225845_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251028162810_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 26 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251028162810_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 34 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251028162810_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 78°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028162810_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 932°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251028162810_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 76°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028162810_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028162810_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 5112°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251028162810_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 1053 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251028162810_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028162810_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251124220315_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251124220315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 24°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251124220315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251124220315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 6°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251124220315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251124220315_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 1854°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251124220315_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 29 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251124220315_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 12°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251124220315_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201180351_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 52°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180351_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180351_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 53°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180351_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180351_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2146°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251201180351_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 88 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251201180351_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201180351_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±60 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251220142516_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251220142516_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±51 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251220142516_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 9 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251220142516_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 8 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251220142516_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 77°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220142516_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220142516_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 5°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220142516_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220142516_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2333°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251220142516_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 53 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251220142516_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251220142516_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251103171753_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 74°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171753_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171753_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 14°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171753_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171753_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2360°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251103171753_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251103171753_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±57 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251223215909_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251223215909_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 80°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215909_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215909_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 81°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215909_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215909_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2515°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251223215909_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 78 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251223215909_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223215909_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251201181703_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 80°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201181703_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201181703_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 54°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201181703_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201181703_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2358°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251201181703_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 11 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251201181703_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251201181703_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±153 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 390 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±355 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 22 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 22 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 67°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 583°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 25°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 3140°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 892 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 20°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251025160401 alternation noise_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251223194633_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 23°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223194633_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223194633_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 11°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223194633_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223194633_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 2628°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251223194633_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 164 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251223194633_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 16°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251223194633_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20260120122929_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 25 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260120122929_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 23 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20260120122929_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 82°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120122929_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 24°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120122929_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 80°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120122929_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120122929_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 4849°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20260120122929_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 1524 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20260120122929_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20260120122929_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 0 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",TOYOTA_989347712041_20251028150616_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 77 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251028150616_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 52 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",TOYOTA_989347712041_20251028150616_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 80°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028150616_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 872°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251028150616_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 76°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028150616_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 0°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028150616_clean.csv
+CRITICAL,Cooling System,Engine Overheating,Coolant temperature: 5583°F (normal: 180-210°F),"IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump",TOYOTA_989347712041_20251028150616_clean.csv
+WARNING,Cooling System,Unstable Engine Temperature,Detected 9155 rapid temperature fluctuations,"Check thermostat, coolant level, and temperature sensor",TOYOTA_989347712041_20251028150616_clean.csv
+WARNING,Cooling System,Engine Running Cold,Coolant temperature: 21°F (normal: 180-210°F),Check thermostat - may be stuck open,TOYOTA_989347712041_20251028150616_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±84 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",VOLVO_989347712041_20251223144202_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 12 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",VOLVO_989347712041_20251223144202_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 29 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",VOLVO_989347712041_20251020083154_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±63 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",VOLVO_989347712041_20251223125304_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 10 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",VOLVO_989347712041_20251223125304_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 253 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",VOLVO_989347712041_20260111101808_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 46 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",VOLVO_989347712041_20251223134652_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 11 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",VOLVO_989347712041_20251223144352_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 9 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",VOLVO_989347712041_20251223124125_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 21 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",VOLVO_989347712041_20251223133706_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 13 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",VOLVO_989347712041_20251223123050_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 66 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",VOLVO_989347712041_20251223114913_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±64 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",VOLVO_989347712041_20251223122901_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 15 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",VOLVO_989347712041_20251223122901_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 66 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",VOLVO_989347712041_20251020123059_clean.csv
+WARNING,Engine Performance,Low Idle RPM,Average idle RPM: 532 (expected 650-800),"Check for vacuum leaks, dirty throttle body, or idle control valve issues",GM_989347712041_20260314142427_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±97 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",GM_989347712041_20260314142427_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 11 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",GM_989347712041_20260314142427_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±174 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",GM_989347712041_20260314102720_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 52 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",GM_989347712041_20260314102720_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 49 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",GM_989347712041_20260314082915_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±186 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",GM_989347712041_20260314142055_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 7 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",GM_989347712041_20260314142055_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 43 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",GM_989347712041_20260314085627_clean.csv
+WARNING,Engine Performance,Rough Idle - RPM Fluctuation,RPM variation: ±132 RPM (should be <50),"Check for misfires, vacuum leaks, or engine mount issues",GM_989347712041_20260314083419_clean.csv
+WARNING,Engine Performance,Erratic RPM Behavior,Detected 8 sudden RPM changes (>200 RPM/reading),"Possible misfire, fuel delivery issue, or sensor problem",GM_989347712041_20260314083419_clean.csv
+CRITICAL,Ignition/Fuel System,"Multiple Cylinder Misfire (Cylinders: 7, 2, 8, 3, 4, 6)","6 cylinders affected, 1066 total misfires","Multiple cylinders affected - Check:
+  1. Fuel pressure (low pressure affects all cylinders)
+  2. Air intake system (vacuum leaks, MAF sensor)
+  3. Engine timing (timing chain/belt)
+  4. Compression test on all cylinders
+  5. Fuel quality (water in fuel, bad gas)",VIN: 1GKFK16368J144884

@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BCScanTool Diagnostic Report - November 2025</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .header .subtitle {
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .status-good {
+            background: #10b981;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .status-warning {
+            background: #f59e0b;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .status-bad {
+            background: #ef4444;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .metric {
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .metric-label {
+            color: #666;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        .good {
+            color: #10b981;
+            font-weight: bold;
+        }
+        .warning {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+        .bad {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            color: #666;
+            margin-top: 40px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚗 BCScanTool Diagnostic Report</h1>
+        <div class="subtitle">
+            November 2025 Analysis | Generated November 03, 2025 at 10:04 PM
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2>📊 Overall Vehicle Health</h2>
+        <div class="status-good">
+            ✅ ALL SYSTEMS NORMAL
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2>📈 Analysis Summary</h2>
+        <div style="text-align: center;">
+            <div class="metric">
+                <div class="metric-value">4,346</div>
+                <div class="metric-label">Data Samples Analyzed</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" style="color: #10b981;">4,346</div>
+                <div class="metric-label">Normal Samples (100.0%)</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" style="color: #ef4444;">0</div>
+                <div class="metric-label">Flagged Samples (0.0%)</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2>🧠 Machine Learning Analysis</h2>
+        <p><strong>Model Accuracy:</strong> <span class="good">99%</span></p>
+        <p><strong>Model Type:</strong> RandomForestClassifier (100 trees)</p>
+        <p><strong>Training Data:</strong> 1,115 labeled diagnostic samples</p>
+        <p><strong>Known Conditions:</strong> Good, Brake Issue</p>
+        
+        <h3>Model Performance Metrics:</h3>
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Brake Issue Detection</th>
+                <th>Normal Condition Detection</th>
+            </tr>
+            <tr>
+                <td><strong>Precision</strong></td>
+                <td class="good">90%</td>
+                <td class="good">100%</td>
+            </tr>
+            <tr>
+                <td><strong>Recall</strong></td>
+                <td class="good">100%</td>
+                <td class="good">99%</td>
+            </tr>
+            <tr>
+                <td><strong>F1-Score</strong></td>
+                <td class="good">95%</td>
+                <td class="good">99%</td>
+            </tr>
+        </table>
+        
+        <p style="margin-top: 20px; padding: 15px; background: #f0f9ff; border-left: 4px solid #667eea;">
+            <strong>What this means:</strong> The model correctly identifies brake issues 100% of the time (perfect recall) 
+            and when it flags a brake issue, it's right 90% of the time (high precision). 
+            This is excellent performance for automotive diagnostics.
+        </p>
+    </div>
+    
+    <div class="card">
+        <h2>🔍 November 2025 Diagnostic Findings</h2>
+        
+        <h3>Prediction Breakdown:</h3>
+        <table>
+            <tr>
+                <th>Condition</th>
+                <th>Count</th>
+                <th>Percentage</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td><strong>Good</strong></td>
+                <td>4,346</td>
+                <td>100.0%</td>
+                <td class="good">✅ Good</td>
+            </tr>
+
+        </table>
+    </div>
+    
+    <div class="card">
+        <h2>📝 Diagnostic Interpretation</h2>
+
+        <div style="padding: 20px; background: #f0fdf4; border-left: 4px solid #10b981;">
+            <h3 style="color: #10b981; margin-top: 0;">✅ Excellent Results</h3>
+            <p>All 4,346 diagnostic data samples from your November 2025 scans show <strong>normal patterns</strong>.</p>
+            <p>The machine learning model, which was trained on known brake issue data with 99% accuracy, 
+            did not detect any concerning patterns in your recent vehicle diagnostics.</p>
+            
+            <h4>What This Means:</h4>
+            <ul>
+                <li>✅ No brake system anomalies detected</li>
+                <li>✅ Vehicle systems operating within normal parameters</li>
+                <li>✅ No patterns matching previously identified issues</li>
+            </ul>
+            
+            <h4>Recommendations:</h4>
+            <ul>
+                <li>Continue regular diagnostic monitoring</li>
+                <li>Run this analysis monthly to track trends</li>
+                <li>Save this report for maintenance records</li>
+            </ul>
+        </div>
+
+    </div>
+    
+    <div class="card">
+        <h2>🔧 Technical Details</h2>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Vehicle</td>
+                <td>2011 Toyota Tacoma SR5 4.0L V6</td>
+            </tr>
+            <tr>
+                <td>Scan Date</td>
+                <td>November 3, 2025</td>
+            </tr>
+            <tr>
+                <td>Data Files Analyzed</td>
+                <td>14 CSV files</td>
+            </tr>
+            <tr>
+                <td>Total Data Points</td>
+                <td>4,346</td>
+            </tr>
+            <tr>
+                <td>ML Model</td>
+                <td>RandomForestClassifier (scikit-learn)</td>
+            </tr>
+            <tr>
+                <td>Model Accuracy</td>
+                <td class="good">99%</td>
+            </tr>
+            <tr>
+                <td>Platform</td>
+                <td>MacBook M4 Pro | Python 3.11</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="footer">
+        <p><strong>BCScanTool v2.0</strong> | Neural Harmonics Lab</p>
+        <p>ML-Powered Automotive Diagnostics | Optimized for Apple Silicon</p>
+        <p style="font-size: 0.9em; color: #999; margin-top: 10px;">
+            This report is for informational purposes only. 
+            Always consult a qualified mechanic for safety-critical repairs.
+        </p>
+    </div>
+</body>
+</html>

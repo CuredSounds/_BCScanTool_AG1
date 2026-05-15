@@ -1,0 +1,3 @@
+type,severity,category,issue,details,prediction,confidence,vin
+FAILURE_PREDICTION,CRITICAL,Ignition System,Cylinder 7 Coil Failure Imminent,"Current misfires: 68, Historical: 1028",Ignition coil #7 likely to fail within 30 days,85%,1GKFK16368J144884
+MAINTENANCE_SCHEDULE,INFO,Preventive Maintenance,Scheduled Maintenance Required,"Immediate: 1, 30-day: 1, 90-day: 0",Health Score: 64/100 - Schedule maintenance to prevent failures,100%,1GKFK16368J144884

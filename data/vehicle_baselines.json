@@ -1,0 +1,37 @@
+{
+  "YV1RS592272608372": {
+    "vin": "YV1RS592272608372",
+    "make": "VOLVO",
+    "model": "S60",
+    "year": "2007",
+    "baselines": {},
+    "health_history": []
+  },
+  "1GKFK16368J144884": {
+    "vin": "1GKFK16368J144884",
+    "make": "GM",
+    "model": "Yukon XL",
+    "year": "2008",
+    "baselines": {},
+    "health_history": []
+  },
+  "5TFUU4EN2BX005907": {
+    "vin": "5TFUU4EN2BX005907",
+    "make": "TOYOTA",
+    "model": "Tacoma",
+    "year": "2011",
+    "baselines": {
+      "idle_rpm": {
+        "min": 696.0,
+        "max": 696.0,
+        "mean": 696.0,
+        "std": 0.0,
+        "range": [
+          696.0,
+          696.0
+        ]
+      }
+    },
+    "health_history": []
+  }
+}
