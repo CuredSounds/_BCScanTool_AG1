@@ -7,3 +7,13 @@ scikit-learn>=1.2.0
 PyPDF2>=3.0.0
 # NOTE: Tkinter cannot be installed via pip. 
 # On macOS, use: brew install python-tk@3.11
+
+# --- Phase 3 Dependencies ---
+fastapi>=0.100.0
+uvicorn>=0.23.0
+pydantic>=2.0.0
+streamlit>=1.25.0
+plotly>=5.15.0
+requests>=2.31.0
+sqlalchemy>=2.0.0
+onnxruntime>=1.15.0
