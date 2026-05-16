@@ -5,6 +5,10 @@ import requests
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
+from src.utils.pdf_generator import generate_health_report
 
 # Configure page
 st.set_page_config(
@@ -163,6 +167,19 @@ with st.sidebar:
 diag_data = fetch_diagnostics(selected_vin)
 
 if diag_data:
+    # Add Export PDF button right above the tabs
+    col_title, col_btn = st.columns([3, 1])
+    with col_btn:
+        with st.spinner("Generating PDF..."):
+            pdf_bytes = generate_health_report(diag_data)
+            st.download_button(
+                label="🖨️ Export PDF Report",
+                data=pdf_bytes,
+                file_name=f"HealthReport_{selected_vin}_{datetime.now().strftime('%Y%m%d')}.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+            
     tab1, tab2 = st.tabs(["📊 Overview & Analytics", "🤖 AI Diagnostic Assistant"])
     
     with tab1:

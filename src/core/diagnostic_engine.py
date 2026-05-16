@@ -80,6 +80,9 @@ class DiagnosticEngine:
         # 5. Check for fuel system issues
         self._check_fuel_system(source_file, pid_analyzer)
 
+        # 6. Advanced FFT frequency analysis
+        self._check_frequency_domain(source_file, pid_analyzer)
+
     def _check_idle_rpm(self, source_file, pid_analyzer):
         """Detect idle RPM issues"""
         rpm_data_list = pid_analyzer.get_all_pid_data('engine_speed')
@@ -127,6 +130,45 @@ class DiagnosticEngine:
                         'recommendation': 'Check for misfires, vacuum leaks, or engine mount issues',
                         'source': source_file
                     })
+
+    def _check_frequency_domain(self, source_file, pid_analyzer):
+        """Perform FFT on engine RPM to detect cyclical mechanical issues"""
+        rpm_data_list = pid_analyzer.get_all_pid_data('engine_speed')
+        
+        for rpm_data in rpm_data_list:
+            rpm_data = rpm_data.dropna()
+            
+            if len(rpm_data) < 50:
+                continue
+                
+            # Perform FFT
+            fft_result = np.fft.rfft(rpm_data.values)
+            fft_freq = np.fft.rfftfreq(len(rpm_data))
+            
+            # Get magnitudes (ignore DC component at index 0)
+            magnitudes = np.abs(fft_result)[1:]
+            freqs = fft_freq[1:]
+            
+            if len(magnitudes) == 0:
+                continue
+                
+            max_mag_idx = np.argmax(magnitudes)
+            max_mag = magnitudes[max_mag_idx]
+            
+            # If the maximum magnitude is very high relative to the mean, we have a strong cyclical anomaly
+            mean_mag = np.mean(magnitudes)
+            
+            if max_mag > mean_mag * 5 and max_mag > 500: # Thresholds for anomaly
+                self.issues.append({
+                    'severity': 'WARNING',
+                    'category': 'Frequency Domain Analysis',
+                    'issue': 'Cyclical Mechanical Anomaly Detected',
+                    'details': f'FFT analysis found a strong cyclical RPM anomaly (Magnitude: {max_mag:.0f}). '
+                               'This indicates a rhythmic mechanical vibration.',
+                    'recommendation': 'Check for timing chain stretch, dual-mass flywheel failure, or rhythmic misfires.',
+                    'source': source_file
+                })
+                break # Only log once per scan
 
     def _check_rpm_fluctuation(self, source_file, pid_analyzer):
         """Detect abnormal RPM fluctuations"""
@@ -297,10 +339,54 @@ class DiagnosticEngine:
                 vehicle_data['test_time_dt'] = pd.to_datetime(vehicle_data['test_time'], errors='coerce')
                 vehicle_data = vehicle_data.sort_values('test_time_dt')
 
+            # --- FREEZE FRAME ANALYSIS ---
+            if 'source_file' in vehicle_data.columns:
+                dtc_snapshots = vehicle_data[vehicle_data['source_file'].str.contains('DTC|FreezeFrame', case=False, na=False)]
+                for _, scan in dtc_snapshots.iterrows():
+                    self._analyze_freeze_frame(scan, vin)
+
             latest = vehicle_data.iloc[-1]
 
             # Check for misfires
             self._check_pdf_misfires(latest, vin)
+
+    def _analyze_freeze_frame(self, scan, vin):
+        """Analyze Freeze Frame data captured at the moment of a DTC"""
+        source = scan.get('source_file', f'VIN: {vin}')
+        
+        # We look at RPM and Temp during the fault
+        rpm = pd.to_numeric(scan.get('engine_speed_rpm', np.nan), errors='coerce')
+        temp = pd.to_numeric(scan.get('coolant_temp_f', np.nan), errors='coerce')
+        
+        if pd.notna(rpm) and rpm > 4000:
+            self.issues.append({
+                'severity': 'WARNING',
+                'category': 'Freeze Frame Analysis',
+                'issue': 'High RPM at Time of Fault',
+                'details': f'Freeze frame shows fault occurred at {rpm:.0f} RPM, indicating an issue under heavy engine load.',
+                'recommendation': 'Investigate fuel pressure, ignition timing, and mass air flow under high load conditions.',
+                'source': source
+            })
+            
+        if pd.notna(temp):
+            if temp > 220:
+                self.issues.append({
+                    'severity': 'CRITICAL',
+                    'category': 'Freeze Frame Analysis',
+                    'issue': 'Overheating at Time of Fault',
+                    'details': f'Freeze frame shows engine coolant was {temp:.0f}°F when the code was set.',
+                    'recommendation': 'Check thermostat, coolant level, and water pump immediately.',
+                    'source': source
+                })
+            elif temp < 160 and temp > 0:
+                self.issues.append({
+                    'severity': 'INFO',
+                    'category': 'Freeze Frame Analysis',
+                    'issue': 'Cold Engine at Time of Fault',
+                    'details': f'Freeze frame shows engine was cold ({temp:.0f}°F) when the code was set.',
+                    'recommendation': 'Fault only occurs during open-loop/cold start. Check cold enrichment, secondary air injection, or ECT sensor.',
+                    'source': source
+                })
 
     def _check_pdf_misfires(self, scan, vin):
         """Analyze misfire patterns from PDF data"""
