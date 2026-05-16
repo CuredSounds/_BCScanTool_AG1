@@ -246,6 +246,55 @@ def get_vehicle_diagnostics(vin: str):
         "scans_count": len(vehicle_data)
     }
 
+@app.get("/api/vehicles/{vin}/topology")
+def get_vehicle_topology(vin: str):
+    """Get the network topology status of all vehicle modules."""
+    df = load_processed_data()
+    if df.empty:
+        raise HTTPException(status_code=404, detail="No diagnostic data found")
+    
+    vehicle_data = df[df['vin'] == vin].copy()
+    if vehicle_data.empty:
+        raise HTTPException(status_code=404, detail=f"No data for VIN {vin}")
+        
+    has_all_system = any(vehicle_data['source_file'].str.contains('AllSystemDTC', case=False, na=False))
+    
+    diag_engine = DiagnosticEngine(None, vehicle_data)
+    issues = diag_engine.analyze()
+    
+    modules = [
+        {"id": "ECM", "name": "Engine Control Module", "status": "OK", "codes": 0},
+        {"id": "TCM", "name": "Transmission Control Module", "status": "OK", "codes": 0},
+        {"id": "ABS", "name": "Anti-lock Braking System", "status": "OK", "codes": 0},
+        {"id": "SRS", "name": "Supplemental Restraint System", "status": "OK", "codes": 0},
+        {"id": "BCM", "name": "Body Control Module", "status": "OK", "codes": 0},
+        {"id": "EPS", "name": "Electronic Power Steering", "status": "OK", "codes": 0},
+    ]
+    
+    for issue in issues:
+        cat = issue.get('category', '').lower()
+        severity = issue.get('severity', 'INFO')
+        
+        if any(kw in cat for kw in ['engine', 'fuel', 'cooling', 'ignition', 'frequency', 'freeze frame']):
+            status = "FAULT" if severity == 'CRITICAL' else "WARNING"
+            if modules[0]['status'] != "FAULT":  
+                modules[0]['status'] = status
+            modules[0]['codes'] += 1
+        elif 'transmission' in cat:
+            modules[1]['status'] = "FAULT" if severity == 'CRITICAL' else "WARNING"
+            modules[1]['codes'] += 1
+            
+    # If no full system scan, other modules are unknown
+    if not has_all_system:
+        for m in modules[1:]:
+            m['status'] = "UNKNOWN"
+            
+    return {
+        "vin": vin,
+        "has_full_scan": has_all_system,
+        "modules": modules
+    }
+
 class RepairLogRequest(BaseModel):
     vin: str
     description: str

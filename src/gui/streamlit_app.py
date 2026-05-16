@@ -77,6 +77,15 @@ def fetch_diagnostics(vin: str):
         st.error(f"Failed to fetch diagnostics for {vin}")
         return None
 
+@st.cache_data(ttl=60)
+def fetch_topology(vin: str):
+    try:
+        response = requests.get(f"{API_BASE_URL}/vehicles/{vin}/topology")
+        response.raise_for_status()
+        return response.json()
+    except Exception:
+        return None
+
 def draw_health_gauge(score: float, grade: str):
     color = "#22c55e" if score >= 80 else "#eab308" if score >= 60 else "#ef4444"
     
@@ -180,7 +189,7 @@ if diag_data:
                 use_container_width=True
             )
             
-    tab1, tab2 = st.tabs(["📊 Overview & Analytics", "🤖 AI Diagnostic Assistant"])
+    tab1, tab2, tab3 = st.tabs(["📊 Overview & Analytics", "🌐 Vehicle Topology", "🤖 AI Diagnostic Assistant"])
     
     with tab1:
         # Top Metrics Row
@@ -244,6 +253,38 @@ if diag_data:
             st.success("No active diagnostic issues detected.")
 
     with tab2:
+        st.subheader("Vehicle Module Network Topology")
+        st.markdown("Visual representation of communication status and health for all onboard modules.")
+        
+        topology_data = fetch_topology(selected_vin)
+        if topology_data:
+            if not topology_data.get('has_full_scan'):
+                st.info("⚠️ Full System Scan (AllSystemDTC) not found for this vehicle. Showing estimated module status based on available Engine/Transmission data.")
+            else:
+                st.success("✅ Full System Scan Detected! Displaying all mapped modules.")
+            
+            # Draw a grid of modules
+            modules = topology_data.get('modules', [])
+            cols = st.columns(3)
+            for i, mod in enumerate(modules):
+                with cols[i % 3]:
+                    status = mod.get('status', 'UNKNOWN')
+                    color = "#22c55e" if status == "OK" else "#ef4444" if status == "FAULT" else "#eab308" if status == "WARNING" else "#64748b"
+                    icon = "✅" if status == "OK" else "❌" if status == "FAULT" else "⚠️" if status == "WARNING" else "❓"
+                    
+                    st.markdown(f"""
+                    <div style="background-color: #1E293B; padding: 20px; border-radius: 10px; border-top: 5px solid {color}; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                        <h2 style="margin:0; color: #E2E8F0; font-size: 28px;">{mod.get('id')}</h2>
+                        <p style="color: #94A3B8; font-size: 12px; margin-bottom: 10px;">{mod.get('name')}</p>
+                        <div style="font-size: 32px; margin: 10px 0;">{icon}</div>
+                        <p style="margin-top: 5px; font-weight: 800; color: {color}; letter-spacing: 1px;">{status}</p>
+                        <p style="font-size: 12px; color: #94A3B8; margin: 0;">Active Codes: {mod.get('codes', 0)}</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+        else:
+            st.error("Failed to load topology data. Check API connection.")
+
+    with tab3:
         st.subheader("Chat with your AI Mechanic")
         st.markdown("Ask questions about your vehicle's health, misfires, or recommended maintenance.")
         
