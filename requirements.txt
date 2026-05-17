@@ -17,3 +17,14 @@ plotly>=5.15.0
 requests>=2.31.0
 sqlalchemy>=2.0.0
 onnxruntime>=1.15.0
+
+# --- Phase 4 Dependencies ---
+# Cloud Synchronization
+google-api-python-client>=2.0.0
+google-auth-httplib2>=0.1.0
+google-auth-oauthlib>=1.0.0
+# Report Generation
+fpdf2>=2.7.0
+# Live ELM327 Streaming
+obd>=0.7.1
+pyserial>=3.5

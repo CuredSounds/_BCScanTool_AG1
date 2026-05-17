@@ -184,3 +184,4 @@ data/diagnostics.db
 credentials.json
 .credentials.json
 token.json
+.DS_Store

@@ -1,8 +1,17 @@
 #!/usr/bin/env python3
 import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+
+# Disable Apple Silicon Metal GPU to prevent XLA compile hangs
+try:
+    tf.config.set_visible_devices([], 'GPU')
+except:
+    pass
+
 from pathlib import Path
 
 def main():
@@ -44,13 +53,22 @@ def main():
     # Target variable (predict total_misfire, same as MATLAB)
     y_data = df['total_misfire'].fillna(0).values.astype(np.float32)
     
-    # Shape for Keras Sequence-to-Sequence: [BatchSize, SequenceLength, Features]
-    # We treat the entire series as a single sequence of shape [1, L, 21]
-    X_train = np.expand_dims(sensor_data, axis=0) # Shape: [1, L, 21]
-    y_train = np.expand_dims(y_data, axis=0)      # Shape: [1, L]
-    y_train = np.expand_dims(y_train, axis=-1)    # Shape: [1, L, 1]
+    print("\n2. Windowing Data & Defining LSTM Architecture...")
+    # LSTMs cannot unroll 255,000 steps at once without crashing memory. We window it!
+    SEQUENCE_LENGTH = 10
+    num_samples = len(sensor_data) - SEQUENCE_LENGTH
     
-    print("\n2. Defining LSTM Deep Learning Architecture...")
+    # We will take a smaller subset of the data (5,000 samples) to make training snappy for the prototype
+    max_samples = min(num_samples, 5000)
+    
+    X_train = np.zeros((max_samples, SEQUENCE_LENGTH, len(numeric_cols)), dtype=np.float32)
+    y_train = np.zeros((max_samples, SEQUENCE_LENGTH, 1), dtype=np.float32)
+    
+    for i in range(max_samples):
+        X_train[i] = sensor_data[i : i + SEQUENCE_LENGTH]
+        y_train[i] = np.expand_dims(y_data[i : i + SEQUENCE_LENGTH], axis=-1)
+        
+    print(f"   Generated {max_samples} sequences of length {SEQUENCE_LENGTH}.")
     print(f"   Input features: {len(numeric_cols)}")
     print("   LSTM Hidden Units: 50")
     print("   Output layer: Dense (1 output, sequence-to-sequence mode)")
@@ -58,14 +76,16 @@ def main():
     # Replicate MATLAB layers: SequenceInput -> LSTM -> FullyConnected -> Regression
     model = tf.keras.Sequential([
         tf.keras.layers.Input(shape=(None, len(numeric_cols)), name="input"),
-        tf.keras.layers.LSTM(50, return_sequences=True, name="lstm"),
+        tf.keras.layers.LSTM(50, return_sequences=True, unroll=True, name="lstm"),
         tf.keras.layers.Dense(1, name="fc")
     ])
     
-    model.compile(optimizer='adam', loss='mse')
+    model.compile(optimizer='adam', loss='mse', run_eagerly=True)
     
-    print("\n3. Training Network using Keras Deep Learning Engine...")
-    model.fit(X_train, y_train, epochs=15, verbose=1)
+    print("\n3. Training Network using Keras Deep Learning Engine (Verbose disabled to prevent macOS terminal deadlocks)...")
+    # Set verbose=0 to prevent the Keras progress bar from deadlocking zsh
+    model.fit(X_train, y_train, epochs=15, batch_size=256, verbose=0, use_multiprocessing=False, workers=1)
+    print("   => Training Complete!")
     
     # Save the model
     model_dir.mkdir(parents=True, exist_ok=True)

@@ -1,11 +1,19 @@
-#!/usr/bin/env python3
 import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+
 import glob
 import json
 import argparse
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+
+# Disable Apple Silicon Metal GPU to prevent XLA compile hangs
+try:
+    tf.config.set_visible_devices([], 'GPU')
+except:
+    pass
+
 from pathlib import Path
 
 def build_lstm_autoencoder(num_features):
@@ -17,19 +25,19 @@ def build_lstm_autoencoder(num_features):
     model = tf.keras.Sequential([
         # Encoder
         tf.keras.layers.Input(shape=(None, num_features), name="sensor_input"),
-        tf.keras.layers.LSTM(64, return_sequences=True, name="encoder_lstm_1"),
-        tf.keras.layers.LSTM(32, return_sequences=False, name="encoder_lstm_2"),
+        tf.keras.layers.LSTM(64, return_sequences=True, unroll=True, name="encoder_lstm_1"),
+        tf.keras.layers.LSTM(32, return_sequences=False, unroll=True, name="encoder_lstm_2"),
         
         # Bottleneck (Latent Representation of the Vehicle's State)
         tf.keras.layers.RepeatVector(1, name="bottleneck_repeat"),
         
         # Decoder
-        tf.keras.layers.LSTM(32, return_sequences=True, name="decoder_lstm_1"),
-        tf.keras.layers.LSTM(64, return_sequences=True, name="decoder_lstm_2"),
+        tf.keras.layers.LSTM(32, return_sequences=True, unroll=True, name="decoder_lstm_1"),
+        tf.keras.layers.LSTM(64, return_sequences=True, unroll=True, name="decoder_lstm_2"),
         tf.keras.layers.TimeDistributed(tf.keras.layers.Dense(num_features), name="reconstruction_output")
     ])
     
-    model.compile(optimizer='adam', loss='mse')
+    model.compile(optimizer='adam', loss='mse', run_eagerly=True)
     return model
 
 def main():
@@ -117,12 +125,15 @@ def main():
     print(f"   => Windowing data into {SEQUENCE_LENGTH}-step sequences...")
     num_samples = len(normalized_data) - SEQUENCE_LENGTH
     
-    if num_samples <= 0:
+    # Take a smaller subset (e.g. 5,000 samples) to make the prototype training snappy
+    max_samples = min(num_samples, 5000)
+    
+    if max_samples <= 0:
         print("Not enough data to create sequences.")
         return
         
-    X_train = np.zeros((num_samples, SEQUENCE_LENGTH, num_features), dtype=np.float32)
-    for i in range(num_samples):
+    X_train = np.zeros((max_samples, SEQUENCE_LENGTH, num_features), dtype=np.float32)
+    for i in range(max_samples):
         X_train[i] = normalized_data[i : i + SEQUENCE_LENGTH]
         
     # In an autoencoder, the target is the input itself!
@@ -132,9 +143,10 @@ def main():
     model = build_lstm_autoencoder(num_features)
     model.summary()
     
-    print("\n5. Training Unsupervised LSTM Anomaly Detector...")
-    # Train for 5 epochs (keep it relatively fast for the demo)
-    model.fit(X_train, Y_train, epochs=5, batch_size=32, validation_split=0.1)
+    print("\n5. Training Unsupervised LSTM Anomaly Detector (Verbose disabled to prevent macOS terminal deadlocks)...")
+    # Train for 5 epochs with a larger batch size for speed and verbose=0
+    model.fit(X_train, Y_train, epochs=5, batch_size=256, validation_split=0.1, verbose=0, use_multiprocessing=False, workers=1)
+    print("   => Training Complete!")
     
     model.save(str(model_path))
     print("\n" + "="*60)
