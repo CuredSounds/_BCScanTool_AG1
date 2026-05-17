@@ -19,6 +19,7 @@ from sqlalchemy import desc
 from src import config
 from src.core.diagnostic_engine import DiagnosticEngine
 from src.core.predictive_analytics import PredictiveAnalytics
+from src.core.gdrive_sync import backup_to_cloud
 import joblib
 
 def load_ml_models():
@@ -367,6 +368,14 @@ Your goal is to answer the user's questions clearly, concisely, and accurately b
             return {"response": f"I encountered an error with the local AI model: {response.status_code}. Try checking your Ollama installation."}
     except Exception as e:
         return {"response": "I could not connect to your local Ollama instance. Please make sure Ollama is running (`ollama serve`) and the `llama3` model is installed (`ollama pull llama3`). If you intended to use Google Gemini, please ensure your API key is configured."}
+
+@app.post("/api/cloud_sync")
+def sync_to_cloud():
+    """Trigger a Google Drive backup sync of the database and processed data."""
+    result = backup_to_cloud()
+    if result.get("status") == "error":
+        raise HTTPException(status_code=500, detail=result.get("message"))
+    return result
 
 if __name__ == "__main__":
     import uvicorn

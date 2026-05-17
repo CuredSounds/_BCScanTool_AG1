@@ -172,6 +172,20 @@ with st.sidebar:
         else:
             st.warning("Please enter a repair description.")
 
+    st.markdown("---")
+    st.subheader("☁️ Cloud Backup")
+    st.markdown("Sync diagnostic DB to Google Drive.")
+    if st.button("Force Cloud Sync", use_container_width=True):
+        with st.spinner("Compressing and uploading..."):
+            try:
+                res = requests.post(f"{API_BASE_URL}/cloud_sync")
+                if res.status_code == 200:
+                    st.success("Backup successfully synced to Google Drive!")
+                else:
+                    st.error(f"Sync failed: {res.json().get('detail', res.text)}")
+            except Exception as e:
+                st.error(f"Connection error: {e}")
+
 # Main Content
 diag_data = fetch_diagnostics(selected_vin)
 
