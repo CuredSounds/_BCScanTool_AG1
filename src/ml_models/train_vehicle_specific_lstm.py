@@ -1,14 +1,22 @@
 import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+# Redirect Matplotlib cache to a temporary directory to resolve Fontconfig permission errors
+os.environ["MPLCONFIGDIR"] = "/tmp/matplotlib"
+
+# Force single-threading in C++ backend libraries to prevent OpenMP/GIL deadlocks on Apple Silicon
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
+os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
 import glob
 import json
 import argparse
-import pandas as pd
 import numpy as np
 import tensorflow as tf
 
-# Disable Apple Silicon Metal GPU to prevent XLA compile hangs
+# Keep GPU disabled to ensure robust CPU-only training on Macs
 try:
     tf.config.set_visible_devices([], 'GPU')
 except:
@@ -16,28 +24,28 @@ except:
 
 from pathlib import Path
 
-def build_lstm_autoencoder(num_features):
+def build_lstm_autoencoder(num_features, sequence_length=10):
     """
-    Builds an LSTM Autoencoder. 
+    Builds a GRU Autoencoder (using GRUs to prevent Apple Silicon CPU deadlocks). 
     An Autoencoder learns to compress and reconstruct the datastream.
     A high reconstruction error indicates an anomaly (a broken pattern in the 200+ sensors).
     """
     model = tf.keras.Sequential([
         # Encoder
-        tf.keras.layers.Input(shape=(None, num_features), name="sensor_input"),
-        tf.keras.layers.LSTM(64, return_sequences=True, unroll=True, name="encoder_lstm_1"),
-        tf.keras.layers.LSTM(32, return_sequences=False, unroll=True, name="encoder_lstm_2"),
+        tf.keras.layers.Input(shape=(sequence_length, num_features), name="sensor_input"),
+        tf.keras.layers.GRU(64, return_sequences=True, name="encoder_gru_1"),
+        tf.keras.layers.GRU(32, return_sequences=False, name="encoder_gru_2"),
         
         # Bottleneck (Latent Representation of the Vehicle's State)
-        tf.keras.layers.RepeatVector(1, name="bottleneck_repeat"),
+        tf.keras.layers.RepeatVector(sequence_length, name="bottleneck_repeat"),
         
         # Decoder
-        tf.keras.layers.LSTM(32, return_sequences=True, unroll=True, name="decoder_lstm_1"),
-        tf.keras.layers.LSTM(64, return_sequences=True, unroll=True, name="decoder_lstm_2"),
+        tf.keras.layers.GRU(32, return_sequences=True, name="decoder_gru_1"),
+        tf.keras.layers.GRU(64, return_sequences=True, name="decoder_gru_2"),
         tf.keras.layers.TimeDistributed(tf.keras.layers.Dense(num_features), name="reconstruction_output")
     ])
     
-    model.compile(optimizer='adam', loss='mse', run_eagerly=True)
+    model.compile(optimizer='adam', loss='mse')
     return model
 
 def main():
@@ -70,19 +78,38 @@ def main():
         
     print(f"Found {len(csv_files)} datastream files. Loading and concatenating...")
     
-    all_dfs = []
+    import csv
+    all_rows = []
+    headers = set()
+    column_types = {}
+    
     for f in csv_files:
         try:
-            df = pd.read_csv(f, low_memory=False)
-            all_dfs.append(df)
+            with open(f, 'r') as fh:
+                reader = csv.DictReader(fh)
+                header = reader.fieldnames
+                if not header:
+                    continue
+                headers.update(header)
+                for row in reader:
+                    all_rows.append(row)
+                    for col in header:
+                        val = row[col]
+                        if not val:
+                            continue
+                        if col not in column_types:
+                            column_types[col] = True
+                        if column_types[col]:
+                            try:
+                                float(val)
+                            except ValueError:
+                                column_types[col] = False
         except Exception as e:
             print(f"Skipping {f.name} due to error: {e}")
             
-    master_df = pd.concat(all_dfs, ignore_index=True)
-    
     print("2. Discovering Vehicle-Specific Features...")
     # Extract all numeric columns
-    numeric_cols = master_df.select_dtypes(include=[np.number]).columns.tolist()
+    numeric_cols = [col for col in sorted(list(headers)) if column_types.get(col, False)]
     
     # Remove irrelevant metadata columns if they exist
     if 'Row' in numeric_cols:
@@ -98,8 +125,16 @@ def main():
     print(f"   => Feature map saved to {features_path.name}")
     
     print("\n3. Preprocessing Data (Normalization)...")
-    # Fill missing values with 0
-    sensor_data = master_df[numeric_cols].fillna(0).values.astype(np.float32)
+    # Parse rows into float matrix
+    sensor_list = []
+    for row in all_rows:
+        x_row = []
+        for col in numeric_cols:
+            val = row.get(col, '0.0')
+            x_row.append(float(val) if val else 0.0)
+        sensor_list.append(x_row)
+        
+    sensor_data = np.array(sensor_list, dtype=np.float32)
     
     # For an Autoencoder, we want to normalize data to 0-1 or standardize.
     # We will use simple MinMax scaling per feature to prevent massive variables (like RPM) from dominating.
@@ -143,9 +178,9 @@ def main():
     model = build_lstm_autoencoder(num_features)
     model.summary()
     
-    print("\n5. Training Unsupervised LSTM Anomaly Detector (Verbose disabled to prevent macOS terminal deadlocks)...")
-    # Train for 5 epochs with a larger batch size for speed and verbose=0
-    model.fit(X_train, Y_train, epochs=5, batch_size=256, validation_split=0.1, verbose=0, use_multiprocessing=False, workers=1)
+    print("\n5. Training Unsupervised LSTM Anomaly Detector...")
+    # Using verbose=2 (one line per epoch) to prevent progress bar terminal TTY deadlocks in subprocesses
+    model.fit(X_train, Y_train, epochs=5, batch_size=256, validation_split=0.1, verbose=2)
     print("   => Training Complete!")
     
     model.save(str(model_path))
