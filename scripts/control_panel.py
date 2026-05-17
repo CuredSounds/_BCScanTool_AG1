@@ -11,9 +11,11 @@ def print_menu():
     print("Please select an action:")
     print("  1. 🏎️  Launch Phase 3 Dashboard (API + Streamlit)")
     print("  2. 🧠  Train Machine Learning Models (Scikit-Learn)")
-    print("  3. 🗄️  Seed/Reset SQLite Database (From CSV)")
-    print("  4. 🛠️  Convert Raw .x431 Files to CSV")
-    print("  5. 🚪  Exit")
+    print("  3. 🧠  Train Fleet-Wide LSTM Model (21 Features)")
+    print("  4. 🎯  Train Vehicle-Specific LSTM (200+ Features)")
+    print("  5. 🗄️  Seed/Reset SQLite Database (From CSV)")
+    print("  6. 🛠️  Convert Raw .x431 Files to CSV")
+    print("  7. 🚪  Exit")
     print("=" * 60)
 
 def get_python_exec(project_root):
@@ -27,7 +29,7 @@ def main():
     while True:
         print_menu()
         try:
-            choice = input("Enter option (1-5): ").strip()
+            choice = input("Enter option (1-7): ").strip()
             
             if choice == '1':
                 print("\nStarting the complete Dashboard stack...")
@@ -40,20 +42,32 @@ def main():
                 time.sleep(1)
             
             elif choice == '3':
+                print("\nInitiating Fleet-Wide Deep Learning LSTM Training...")
+                subprocess.run([python_exec, str(project_root / "src" / "ml_models" / "train_lstm_keras.py")])
+                time.sleep(1)
+                
+            elif choice == '4':
+                print("\nInitiating Vehicle-Specific Deep Learning Autoencoder Training...")
+                make = input("Enter Vehicle Make (e.g. Toyota): ").strip() or "Toyota"
+                model = input("Enter Vehicle Model (e.g. Tacoma): ").strip() or "Tacoma"
+                subprocess.run([python_exec, str(project_root / "src" / "ml_models" / "train_vehicle_specific_lstm.py"), "--make", make, "--model", model])
+                time.sleep(1)
+            
+            elif choice == '5':
                 print("\nSeeding SQLite Database with existing data...")
                 subprocess.run([python_exec, str(project_root / "scripts" / "seed_database.py")])
                 time.sleep(1)
                 
-            elif choice == '4':
+            elif choice == '6':
                 print("\nRunning X431 Converter Tool...")
                 subprocess.run([python_exec, str(project_root / "scripts" / "convert_x431.py")])
                 time.sleep(1)
                 
-            elif choice == '5':
+            elif choice == '7':
                 print("\nShutting down Master Control Panel. Goodbye!\n")
                 break
             else:
-                print("\n⚠️ Invalid option. Please enter a number between 1 and 5.")
+                print("\n⚠️ Invalid option. Please enter a number between 1 and 7.")
                 
         except KeyboardInterrupt:
             print("\n\nShutting down Master Control Panel. Goodbye!\n")

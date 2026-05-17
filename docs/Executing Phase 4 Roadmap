@@ -1,0 +1,42 @@
+Executing Phase 4 Roadmap
+Phase 4 Roadmap.md
+ Hey, I started a new chat for phase 4!
+Welcome to Phase 4! It's great to see the transition from a highly capable local diagnostic tool to an even more advanced, commercial-grade platform.
+
+I've reviewed the Phase 4 Roadmap you shared, and we have some really exciting, high-impact features lined up:
+
+🛠️ The "Repair Logged" Feature (Data Segmentation): Updating the database and API to reset the baseline after a repair.
+🖨️ Customer-Facing PDF Report Generator: Building an export system in Streamlit for professional, white-labeled health reports.
+📡 Live ELM327 Bluetooth Integration: Writing a direct pipeline to stream OBD-II data live into the FastAPI server.
+📊 Advanced Frequency Domain Analysis (FFT): Adding FFT processing to catch cyclical mechanical anomalies.
+🌐 Fleet-Wide Cloud Synchronization: Setting up AWS/GCP syncing for distributed model training across multiple instances.
+Which of these would you like to tackle first? We can jump right into the implementation for any of them!
+
+4:56 PM, 5/15/2026
+Let's start with the order you laid out. I need to put the .db file on a gitnore list because github says it's too big. https://github.com/CuredSounds/_BCScanTool_AG.git
+Done! We've made great progress on both requests.
+
+1. Git & .gitignore Updates
+I successfully untracked the data/diagnostics.db file from git's cache (using git rm --cached) and committed the change. Going forward, GitHub won't complain about the database being too large since it will now correctly respect the .gitignore rule for *.db files.
+
+2. 🛠️ "Repair Logged" Feature (Data Segmentation) Implemented
+I've implemented the first feature from your Phase 4 Roadmap! Here's what I did:
+
+Database Schema Update: Added a new RepairLog model to src/core/database.py that links to the Vehicle table.
+FastAPI Endpoint: Created a new POST /api/repairs endpoint in src/api/main.py that records the repair description and timestamp for a specific VIN.
+Data Segmentation Logic: Upgraded the GET /api/vehicles/{vin}/diagnostics endpoint. Now, when fetching diagnostic data, the API queries SQLite for the most recent repair date. Any raw sensor data (CSV) from before that date is automatically sliced off and ignored.
+Streamlit UI Integration: Added a new "Vehicle Maintenance" section to the sidebar in src/gui/streamlit_app.py. You can now type in a repair description and hit "Log Repair & Reset Baseline" directly from the dashboard!
+If you restart your FastAPI and Streamlit servers, you'll see the new sidebar section. Try logging a repair; the app will clear out the prior fault history and only run predictions on new data that comes in after the repair!
+
+Would you like to move on to the Customer-Facing PDF Report Generator next, or start setting up the Live ELM327 Bluetooth Integration?
+
+database.py
++12
+-0
+main.py
++121
+-1
+streamlit_app.py
++95
+-1
+4:59 PM, 5/15/2026

@@ -27,6 +27,7 @@ def load_ml_models():
     supervised_path = config.MODELS_DIR / "supervised_pipeline.joblib"
     anomaly_path = config.MODELS_DIR / "anomaly_pipeline.joblib"
     onnx_path = config.MODELS_DIR / "vehicle_lstm_model.onnx"
+    keras_path = config.MODELS_DIR / "vehicle_lstm_model.keras"
     
     supervised = joblib.load(supervised_path) if supervised_path.exists() else None
     anomaly = joblib.load(anomaly_path) if anomaly_path.exists() else None
@@ -42,9 +43,21 @@ def load_ml_models():
         except Exception as e:
             print(f"Failed to load ONNX model: {e}")
             
-    return supervised, anomaly, onnx_session
+    keras_model = None
+    if keras_path.exists():
+        try:
+            import tensorflow as tf
+            keras_model = tf.keras.models.load_model(str(keras_path))
+            print(f"Loaded Python Keras Model: {keras_path.name}")
+        except ImportError:
+            print("TensorFlow not installed. Cannot load Keras model.")
+        except Exception as e:
+            print(f"Failed to load Keras model: {e}")
+            
+    return supervised, anomaly, onnx_session, keras_model
 
-SUPERVISED_MODEL, ANOMALY_MODEL, ONNX_MODEL = load_ml_models()
+SUPERVISED_MODEL, ANOMALY_MODEL, ONNX_MODEL, KERAS_MODEL = load_ml_models()
+VEHICLE_SPECIFIC_MODELS = {}
 
 app = FastAPI(title="BC Scan Tool API", version="1.0.0")
 
@@ -127,10 +140,14 @@ def get_vehicle_diagnostics(vin: str):
         raise HTTPException(status_code=404, detail=f"No data for VIN {vin}")
         
     # --- DATA SEGMENTATION: Apply Repair Log Filter ---
+    v_make = "Unknown"
+    v_model = "Unknown"
     db = SessionLocal()
     try:
         vehicle = db.query(Vehicle).filter(Vehicle.vin == vin).first()
         if vehicle:
+            v_make = vehicle.make
+            v_model = vehicle.model
             latest_repair = db.query(RepairLog).filter(RepairLog.vehicle_id == vehicle.id).order_by(desc(RepairLog.date)).first()
             if latest_repair and 'test_time_dt' in vehicle_data.columns:
                 vehicle_data['test_time_dt'] = pd.to_datetime(vehicle_data['test_time_dt'])
@@ -217,23 +234,149 @@ def get_vehicle_diagnostics(vin: str):
         except Exception as e:
             print(f"Anomaly ML Error: {e}")
             
-    # 3. ONNX Deep Learning Model (MATLAB Export)
-    if ONNX_MODEL:
+    # 3. Deep Learning Models (MATLAB ONNX + Python Keras)
+    numeric_cols = [
+        'year', 'engine_speed_rpm', 'coolant_temp_f', 
+        'misfire_current_cyl1', 'misfire_current_cyl2', 'misfire_current_cyl3', 'misfire_current_cyl4', 
+        'misfire_current_cyl5', 'misfire_current_cyl6', 'misfire_current_cyl7', 'misfire_current_cyl8', 
+        'misfire_history_cyl1', 'misfire_history_cyl2', 'misfire_history_cyl3', 'misfire_history_cyl4', 
+        'misfire_history_cyl5', 'misfire_history_cyl6', 'misfire_history_cyl7', 'misfire_history_cyl8', 
+        'total_misfire', 'misfire_cycles'
+    ]
+    
+    if (ONNX_MODEL or KERAS_MODEL) and len(vehicle_data) > 0:
         try:
             import numpy as np
-            # NOTE: When your MATLAB model is ready, map 'latest_scan' to the correct ONNX input array here.
-            # input_name = ONNX_MODEL.get_inputs()[0].name
-            # onnx_pred = ONNX_MODEL.run(None, {input_name: X_onnx_array})
             
-            predictions.append({
-                "severity": "INFO",
-                "issue": "Deep Learning Active",
-                "details": "The MATLAB-exported ONNX LSTM model is online and monitoring data streams.",
-                "prediction": "Healthy (Baseline)",
-                "confidence": "High"
-            })
+            # Align features
+            X_lstm = vehicle_data.copy()
+            for col in numeric_cols:
+                if col not in X_lstm.columns:
+                    X_lstm[col] = 0.0
+            
+            X_array = X_lstm[numeric_cols].fillna(0).values.astype(np.float32)
+            
+            # 3a. Run MATLAB ONNX Model
+            if ONNX_MODEL:
+                # Input expected: [SequenceLength, BatchSize=1, Features=21]
+                X_onnx = np.expand_dims(X_array, axis=1)
+                input_name = ONNX_MODEL.get_inputs()[0].name
+                onnx_pred = ONNX_MODEL.run(None, {input_name: X_onnx})[0]
+                # Output shape: [SequenceLength, 1, 1]
+                latest_pred = float(onnx_pred[-1, 0, 0])
+                
+                if latest_pred > 20.0:
+                    status = f"Critical: High Predicted Misfires ({latest_pred:.1f})"
+                    severity = "CRITICAL"
+                elif latest_pred > 5.0:
+                    status = f"Warning: Moderate Predicted Misfires ({latest_pred:.1f})"
+                    severity = "WARNING"
+                else:
+                    status = f"Healthy (Baseline) - Predicted misfires: {latest_pred:.2f}"
+                    severity = "INFO"
+                    
+                predictions.append({
+                    "severity": severity,
+                    "issue": "Deep Learning (MATLAB ONNX)",
+                    "details": f"The MATLAB-exported ONNX LSTM model predicted an anomaly rating of {latest_pred:.2f}.",
+                    "prediction": status,
+                    "confidence": "High"
+                })
+                
+            # 3b. Run Python Keras Model
+            if KERAS_MODEL:
+                # Input expected: [BatchSize=1, SequenceLength, Features=21]
+                X_keras = np.expand_dims(X_array, axis=0)
+                keras_pred = KERAS_MODEL.predict(X_keras, verbose=0)[0]
+                # Output shape: [SequenceLength, 1]
+                latest_k_pred = float(keras_pred[-1, 0])
+                
+                if latest_k_pred > 20.0:
+                    status = f"Critical: High Predicted Misfires ({latest_k_pred:.1f})"
+                    severity = "CRITICAL"
+                elif latest_k_pred > 5.0:
+                    status = f"Warning: Moderate Predicted Misfires ({latest_k_pred:.1f})"
+                    severity = "WARNING"
+                else:
+                    status = f"Healthy (Baseline) - Predicted misfires: {latest_k_pred:.2f}"
+                    severity = "INFO"
+                    
+                predictions.append({
+                    "severity": severity,
+                    "issue": "Deep Learning (Python Keras)",
+                    "details": f"The native Python Keras LSTM model predicted an anomaly rating of {latest_k_pred:.2f}.",
+                    "prediction": status,
+                    "confidence": "High"
+                })
         except Exception as e:
-            print(f"ONNX ML Error: {e}")
+            print(f"Deep Learning Inference Error: {e}")
+            
+    # 4. Vehicle-Specific Deep Learning Autoencoder
+    if v_make and v_model and v_make != "Unknown":
+        vs_model_path = config.MODELS_DIR / f'vehicle_specific_lstm_{v_make}_{v_model}.keras'
+        vs_features_path = config.MODELS_DIR / f'vehicle_features_{v_make}_{v_model}.json'
+        vs_scaling_path = config.MODELS_DIR / f'vehicle_scaling_{v_make}_{v_model}.json'
+        
+        if vs_model_path.exists() and vs_features_path.exists() and vs_scaling_path.exists():
+            try:
+                import json
+                import numpy as np
+                import tensorflow as tf
+                
+                with open(vs_features_path) as f:
+                    vs_features = json.load(f)
+                with open(vs_scaling_path) as f:
+                    vs_scaling = json.load(f)
+                    
+                model_key = f"{v_make}_{v_model}"
+                if model_key not in VEHICLE_SPECIFIC_MODELS:
+                    VEHICLE_SPECIFIC_MODELS[model_key] = tf.keras.models.load_model(str(vs_model_path))
+                vs_model = VEHICLE_SPECIFIC_MODELS[model_key]
+                
+                raw_dir = config.DATA_DIR / 'csv' / 'Vehicle_make_model' / v_make / v_model
+                if raw_dir.exists():
+                    raw_files = sorted(raw_dir.glob("*_clean.csv"))
+                    if raw_files:
+                        latest_raw = raw_files[-1]
+                        raw_df = pd.read_csv(latest_raw, low_memory=False)
+                        
+                        for col in vs_features:
+                            if col not in raw_df.columns:
+                                raw_df[col] = 0.0
+                                
+                        raw_sensor_data = raw_df[vs_features].fillna(0).values.astype(np.float32)
+                        
+                        if len(raw_sensor_data) >= 10:
+                            recent_data = raw_sensor_data[-10:]
+                            mins = np.array(vs_scaling['mins'], dtype=np.float32)
+                            ranges = np.array(vs_scaling['ranges'], dtype=np.float32)
+                            ranges[ranges == 0] = 1.0
+                            recent_norm = (recent_data - mins) / ranges
+                            
+                            X_vs = np.expand_dims(recent_norm, axis=0)
+                            reconstruction = vs_model.predict(X_vs, verbose=0)
+                            
+                            mse = float(np.mean(np.square(X_vs - reconstruction)))
+                            
+                            if mse > 0.05:
+                                status = f"Critical Sensor Anomaly Detected (MSE: {mse:.4f})"
+                                severity = "CRITICAL"
+                            elif mse > 0.02:
+                                status = f"Warning: Sensor Drift (MSE: {mse:.4f})"
+                                severity = "WARNING"
+                            else:
+                                status = f"Healthy (Baseline) - Signal MSE: {mse:.4f}"
+                                severity = "INFO"
+                                
+                            predictions.append({
+                                "severity": severity,
+                                "issue": f"Autoencoder ({v_make} {v_model})",
+                                "details": f"Analyzed {len(vs_features)} raw datastream sensors to compute an overall reconstruction anomaly score.",
+                                "prediction": status,
+                                "confidence": "High"
+                            })
+            except Exception as e:
+                print(f"Vehicle-Specific Autoencoder Error: {e}")
     
     score_data = health_scores.get(vin, {"score": 100, "grade": "A", "status": "Unknown"})
     
