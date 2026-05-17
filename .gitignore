@@ -181,3 +181,5 @@ cython_debug/
 .cursorindexingignore
 data/diagnostics.db
 *.db
+credentials.json
+token.json
