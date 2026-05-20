@@ -5,7 +5,12 @@ Extracts and analyzes essential OBD2 PIDs for comprehensive diagnostics
 
 import pandas as pd
 import numpy as np
+import logging
 from typing import Dict, List, Tuple
+
+from src import config
+
+logger = logging.getLogger("BCScanTool.PIDAnalyzer")
 
 
 class PIDAnalyzer:
@@ -69,26 +74,61 @@ class PIDAnalyzer:
         self._map_available_pids()
 
     def _map_available_pids(self):
-        """Map available columns to standard PID names"""
-        print("\nMapping available PIDs...")
+        """Map available columns to standard PID names using specificity scoring.
+        Exact matches win over substring matches. Longer substring matches win over shorter ones.
+        This prevents ambiguous mapping (e.g. 'Short Fuel Trim' matching both bank1 and bank2)."""
+        logger.info("Mapping available PIDs...")
 
-        for pid_name, possible_names in self.CRITICAL_PIDS.items():
-            for col in self.df.columns:
+        # Find all possible matches for all columns
+        col_matches = {}  # col -> list of (pid_name, score)
+        
+        for col in self.df.columns:
+            col_lower = str(col).lower()
+            col_matches[col] = []
+            
+            for pid_name, possible_names in self.CRITICAL_PIDS.items():
+                best_pid_score = -1
                 for possible_name in possible_names:
-                    if possible_name.lower() in str(col).lower():
-                        self.mapped_pids[pid_name] = col
-                        self.available_pids.append(pid_name)
-                        print(f"  ✓ Found {pid_name}: {col}")
-                        break
-                if pid_name in self.mapped_pids:
-                    break
+                    pn_lower = possible_name.lower()
+
+                    # Exact match (case-insensitive) gets highest score
+                    if col_lower == pn_lower:
+                        score = 10000
+                    # Full column name starts with the PID name
+                    elif col_lower.startswith(pn_lower):
+                        score = len(pn_lower) * 2
+                    # Substring match — score by length of match (longer = more specific)
+                    elif pn_lower in col_lower:
+                        score = len(pn_lower)
+                    else:
+                        continue
+                    
+                    if score > best_pid_score:
+                        best_pid_score = score
+                
+                if best_pid_score > -1:
+                    col_matches[col].append((pid_name, best_pid_score))
+
+        # Sort columns by their best match score descending to process most certain ones first
+        # But we need to ensure each PID gets the BEST column for it.
+        
+        pid_to_best_col = {} # pid_name -> (col, score)
+        
+        for col, matches in col_matches.items():
+            for pid_name, score in matches:
+                if pid_name not in pid_to_best_col or score > pid_to_best_col[pid_name][1]:
+                    pid_to_best_col[pid_name] = (col, score)
+        
+        # Now populate mapped_pids
+        for pid_name, (col, score) in pid_to_best_col.items():
+            self.mapped_pids[pid_name] = col
+            self.available_pids.append(pid_name)
+            logger.debug(f"  ✓ {pid_name}: {col} (score={score})")
 
         # Report missing critical PIDs
         missing = set(self.CRITICAL_PIDS.keys()) - set(self.available_pids)
         if missing:
-            print("\n⚠️  Missing Critical PIDs:")
-            for pid in sorted(missing):
-                print(f"  ✗ {pid}")
+            logger.info(f"Missing {len(missing)} PIDs: {sorted(missing)}")
 
     def get_pid_data(self, pid_name: str) -> pd.Series:
         """
@@ -218,11 +258,15 @@ class PIDAnalyzer:
             iat_mean = iat.mean()
             analysis['metrics']['iat_mean'] = iat_mean
 
-            if iat_mean > 140:  # °F
+            # Use config-driven thresholds
+            iat_threshold = 60 if config.TEMP_UNIT == "celsius" else 140
+            unit = "°C" if config.TEMP_UNIT == "celsius" else "°F"
+
+            if iat_mean > iat_threshold:
                 analysis['issues'].append({
                     'severity': 'WARNING',
                     'issue': 'High Intake Air Temperature',
-                    'details': f'IAT: {iat_mean:.0f}°F (should be near ambient)',
+                    'details': f'IAT: {iat_mean:.0f}{unit} (should be near ambient)',
                     'cause': 'Heat soak or cooling issue'
                 })
 

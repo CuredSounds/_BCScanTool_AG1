@@ -181,7 +181,10 @@ cython_debug/
 .cursorindexingignore
 data/diagnostics.db
 *.db
+**/.DS_Store
 credentials.json
 .credentials.json
 token.json
-.DS_Store
+data/csv/Archive 2.zip
+backups.zip
+*.zip

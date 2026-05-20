@@ -7,9 +7,13 @@ import pandas as pd
 import numpy as np
 from scipy import stats
 from scipy.signal import find_peaks
+import logging
 import warnings
 from src.core.pid_analyzer import PIDAnalyzer
+from src import config
 warnings.filterwarnings('ignore')
+
+logger = logging.getLogger("BCScanTool.DiagnosticEngine")
 
 
 class DiagnosticEngine:
@@ -243,7 +247,7 @@ class DiagnosticEngine:
                     })
 
     def _check_temperature_issues(self, source_file, pid_analyzer):
-        """Check for temperature-related issues"""
+        """Check for temperature-related issues using config thresholds (Celsius)"""
         temp_data_list = pid_analyzer.get_all_pid_data('coolant_temp')
 
         for temp_data in temp_data_list:
@@ -254,36 +258,36 @@ class DiagnosticEngine:
 
             mean_temp = temp_data.mean()
 
-            # Check for overheating (>220°F is concerning)
-            if mean_temp > 220:
+            # Check for overheating
+            if mean_temp > config.TEMP_OVERHEAT_C:
                 self.issues.append({
                     'severity': 'CRITICAL',
                     'category': 'Cooling System',
                     'issue': 'Engine Overheating',
-                    'details': f'Coolant temperature: {mean_temp:.0f}°F (normal: 180-210°F)',
+                    'details': f'Coolant temperature: {mean_temp:.0f}°C (normal: {config.TEMP_NORMAL_LOW_C}-{config.TEMP_NORMAL_HIGH_C}°C)',
                     'recommendation': 'IMMEDIATE ATTENTION: Check coolant level, thermostat, radiator, and water pump',
                     'source': source_file
                 })
-            elif mean_temp < 160 and len(temp_data) > 100:  # Running cold for extended time
+            elif mean_temp < config.TEMP_COLD_C and len(temp_data) > 100:
                 self.issues.append({
                     'severity': 'WARNING',
                     'category': 'Cooling System',
                     'issue': 'Engine Running Cold',
-                    'details': f'Coolant temperature: {mean_temp:.0f}°F (normal: 180-210°F)',
+                    'details': f'Coolant temperature: {mean_temp:.0f}°C (normal: {config.TEMP_NORMAL_LOW_C}-{config.TEMP_NORMAL_HIGH_C}°C)',
                     'recommendation': 'Check thermostat - may be stuck open',
                     'source': source_file
                 })
 
             # Check for rapid temperature changes
             temp_changes = temp_data.diff().abs()
-            rapid_changes = temp_changes[temp_changes > 20]
+            rapid_changes = temp_changes[temp_changes > config.TEMP_RAPID_CHANGE_C]
 
             if len(rapid_changes) > 3:
                 self.issues.append({
                     'severity': 'WARNING',
                     'category': 'Cooling System',
                     'issue': 'Unstable Engine Temperature',
-                    'details': f'Detected {len(rapid_changes)} rapid temperature fluctuations',
+                    'details': f'Detected {len(rapid_changes)} rapid temperature fluctuations (>{config.TEMP_RAPID_CHANGE_C}°C)',
                     'recommendation': 'Check thermostat, coolant level, and temperature sensor',
                     'source': source_file
                 })
@@ -369,21 +373,21 @@ class DiagnosticEngine:
             })
             
         if pd.notna(temp):
-            if temp > 220:
+            if temp > config.TEMP_OVERHEAT_C:
                 self.issues.append({
                     'severity': 'CRITICAL',
                     'category': 'Freeze Frame Analysis',
                     'issue': 'Overheating at Time of Fault',
-                    'details': f'Freeze frame shows engine coolant was {temp:.0f}°F when the code was set.',
+                    'details': f'Freeze frame shows engine coolant was {temp:.0f}°C when the code was set.',
                     'recommendation': 'Check thermostat, coolant level, and water pump immediately.',
                     'source': source
                 })
-            elif temp < 160 and temp > 0:
+            elif temp < config.TEMP_COLD_C and temp > 0:
                 self.issues.append({
                     'severity': 'INFO',
                     'category': 'Freeze Frame Analysis',
                     'issue': 'Cold Engine at Time of Fault',
-                    'details': f'Freeze frame shows engine was cold ({temp:.0f}°F) when the code was set.',
+                    'details': f'Freeze frame shows engine was cold ({temp:.0f}°C) when the code was set.',
                     'recommendation': 'Fault only occurs during open-loop/cold start. Check cold enrichment, secondary air injection, or ECT sensor.',
                     'source': source
                 })

@@ -114,6 +114,16 @@ Threshold: 0.0456
 - Probability-based recommendations
 - Issue-to-repair mapping
 
+### 2.5 Manifest-Driven ML Pipeline ✓
+**Files:** `data_quality.py`, `training_pipeline.py`, `scan_manifest.csv`, `parameter_tiers.json`
+
+**Features:**
+- Retroactive labeling via `scan_manifest.csv`
+- Automated column filtering via `parameter_tiers.json` (Tier A/B/C)
+- Quality gates: min rows, initialization drop, engine running check
+- Standardized unit handling (Celsius thresholds)
+- Multi-condition baseline support (Cold Start, Warm Idle, AC Load, etc.)
+
 **Example Output:**
 ```
 REPAIR COST ESTIMATION
@@ -408,8 +418,8 @@ Based on industry research (documented in `RESEARCH_FINDINGS.md`):
 
 ### Immediate (This Week)
 1. ✅ Test all Phase 1-2 features
-2. ✅ Collect more vehicle data
-3. ⏳ Install TensorFlow for ML features
+2. ✅ Implement Manifest-Driven ML Pipeline
+3. ✅ Standardize temperature units (Celsius)
 4. ⏳ Fine-tune LSTM models
 
 ### Short Term (This Month)

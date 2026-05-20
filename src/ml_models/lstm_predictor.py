@@ -61,10 +61,11 @@ class LSTMPredictor:
 
     def prepare_sequences(self, data: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
         """
-        Prepare time-series sequences for LSTM using sliding window
+        Prepare time-series sequences for LSTM using sliding window.
+        Supports multivariate data.
 
         Args:
-            data: 1D array of sensor values
+            data: 2D array of sensor values [samples, features]
 
         Returns:
             X, y: Input sequences and target values
@@ -72,14 +73,12 @@ class LSTMPredictor:
         if len(data) <= self.sequence_length:
             return np.array([]), np.array([])
             
-        # Use sliding window to create sequences
-        # X: [samples, sequence_length], y: [samples]
-        shape = (data.size - self.sequence_length, self.sequence_length)
-        strides = data.strides + data.strides
-        X = np.lib.stride_tricks.as_strided(data, shape=shape, strides=strides)
-        y = data[self.sequence_length:]
-        
-        return X.copy(), y.copy()
+        X, y = [], []
+        for i in range(len(data) - self.sequence_length):
+            X.append(data[i:(i + self.sequence_length), :])
+            y.append(data[i + self.sequence_length, :])
+            
+        return np.array(X), np.array(y)
 
     def build_model(self, input_shape: Tuple[int, int]):
         """
@@ -92,6 +91,7 @@ class LSTMPredictor:
             logger.error("Cannot build model: TensorFlow not installed")
             return
 
+        n_features = input_shape[1]
         layers = []
         # Add LSTM layers
         for i, units in enumerate(self.hidden_layers):
@@ -106,7 +106,7 @@ class LSTMPredictor:
 
         # Add Dense layers
         layers.append(Dense(16, activation='relu'))
-        layers.append(Dense(1, activation='linear'))
+        layers.append(Dense(n_features, activation='linear')) # Output all features
 
         self.model = Sequential(layers)
         self.model.compile(
@@ -116,12 +116,12 @@ class LSTMPredictor:
         )
         logger.info(f"LSTM model built with input shape {input_shape}")
 
-    def train(self, data: pd.Series, epochs: int = 50, batch_size: int = 32, verbose: int = 0) -> bool:
+    def train(self, data: pd.DataFrame, epochs: int = 50, batch_size: int = 32, verbose: int = 0) -> bool:
         """
-        Train LSTM model on time-series data
+        Train LSTM model on multivariate time-series data
 
         Args:
-            data: Pandas Series with sensor values
+            data: Pandas DataFrame with sensor values
             epochs: Number of training epochs
             batch_size: Training batch size
             verbose: Training verbosity
@@ -131,7 +131,7 @@ class LSTMPredictor:
             return False
 
         # Clean data
-        data_clean = data.dropna().values.reshape(-1, 1)
+        data_clean = data.dropna().values
 
         if len(data_clean) < self.sequence_length + 10:
             logger.warning(f"Not enough data points: {len(data_clean)} (need at least {self.sequence_length + 10})")
@@ -144,18 +144,15 @@ class LSTMPredictor:
             data_scaled = data_clean
 
         # Prepare sequences
-        X, y = self.prepare_sequences(data_scaled.flatten())
+        X, y = self.prepare_sequences(data_scaled)
 
         if len(X) == 0:
             logger.warning("No sequences generated")
             return False
 
-        # Reshape for LSTM [samples, time steps, features]
-        X = X.reshape((X.shape[0], X.shape[1], 1))
-
         # Build model if not already built or shape changed
         if self.model is None:
-            self.build_model((X.shape[1], 1))
+            self.build_model((X.shape[1], X.shape[2]))
 
         # Train
         self.model.fit(
@@ -167,24 +164,24 @@ class LSTMPredictor:
         )
 
         self.is_trained = True
-        logger.info("LSTM model training completed")
+        logger.info(f"Multivariate LSTM model training completed on {X.shape[2]} features")
         return True
 
-    def predict_next(self, recent_data: np.ndarray) -> Optional[float]:
+    def predict_next(self, recent_data: np.ndarray) -> Optional[np.ndarray]:
         """
-        Predict next value in sequence
+        Predict next value in sequence for all features
 
         Args:
-            recent_data: Recent sensor values (length >= sequence_length)
+            recent_data: Recent sensor values (length >= sequence_length, features=N)
 
         Returns:
-            Predicted next value
+            Predicted next values array
         """
         if not self.is_trained or self.model is None:
             return None
 
         # Take only the last sequence_length points
-        seq = recent_data[-self.sequence_length:].reshape(-1, 1)
+        seq = recent_data[-self.sequence_length:]
         
         # Prepare input
         if self.scaler:
@@ -192,7 +189,7 @@ class LSTMPredictor:
         else:
             data_scaled = seq
             
-        X = data_scaled.reshape(1, self.sequence_length, 1)
+        X = data_scaled.reshape(1, self.sequence_length, -1)
 
         # Predict
         prediction_scaled = self.model.predict(X, verbose=0)
@@ -203,14 +200,14 @@ class LSTMPredictor:
         else:
             prediction = prediction_scaled
 
-        return float(prediction[0, 0])
+        return prediction[0]
 
-    def detect_anomalies(self, data: pd.Series, threshold: float = 2.0) -> List[int]:
+    def detect_anomalies(self, data: pd.DataFrame, threshold: float = 3.0) -> List[int]:
         """
-        Detect anomalies by comparing predictions to actual values using batch prediction
+        Detect anomalies by comparing predictions to actual values across all sensors
 
         Args:
-            data: Time-series data
+            data: Multivariate time-series data
             threshold: Standard deviations for anomaly threshold
 
         Returns:
@@ -226,7 +223,7 @@ class LSTMPredictor:
 
         # Scale data
         if self.scaler:
-            data_scaled = self.scaler.transform(data_clean.reshape(-1, 1)).flatten()
+            data_scaled = self.scaler.transform(data_clean)
         else:
             data_scaled = data_clean
 
@@ -235,36 +232,24 @@ class LSTMPredictor:
         
         if len(X_batch) == 0:
             return []
-            
-        # Reshape for LSTM [samples, time steps, features]
-        X_batch = X_batch.reshape((X_batch.shape[0], X_batch.shape[1], 1))
 
         # Batch prediction
         predictions_scaled = self.model.predict(X_batch, verbose=0)
         
-        # Inverse transform
-        if self.scaler:
-            predictions = self.scaler.inverse_transform(predictions_scaled).flatten()
-            actuals = data_clean[self.sequence_length:]
-        else:
-            predictions = predictions_scaled.flatten()
-            actuals = data_clean[self.sequence_length:]
+        # Calculate reconstruction error (MSE across all sensors)
+        mse = np.mean(np.square(y_actual_scaled - predictions_scaled), axis=1)
 
-        # Calculate errors
-        errors = np.abs(actuals - predictions)
-
-        # Detect anomalies (errors > threshold * std)
-        mean_error = np.mean(errors)
-        std_error = np.std(errors)
-        anomaly_threshold = mean_error + (threshold * std_error)
+        # Detect anomalies (mse > mean + threshold * std)
+        mean_mse = np.mean(mse)
+        std_mse = np.std(mse)
+        anomaly_threshold = mean_mse + (threshold * std_mse)
 
         anomalies = []
-        for i, error in enumerate(errors):
+        for i, error in enumerate(mse):
             if error > anomaly_threshold:
-                # Anomaly is at the point being predicted
                 anomalies.append(self.sequence_length + i)
 
-        logger.info(f"Detected {len(anomalies)} anomalies in {len(data_clean)} points")
+        logger.info(f"Detected {len(anomalies)} multivariate anomalies in {len(data_clean)} points")
         return anomalies
 
     def save_model(self, filepath: str):
@@ -308,31 +293,39 @@ class VehicleLSTMAnalyzer:
 
     def _run_generic_analysis(self, pid_name: str, label: str, seq_len: int = 10, 
                              epochs: int = 30, threshold: float = 2.0) -> Optional[Dict[str, Any]]:
-        """Generic method to run LSTM analysis on a PID"""
-        logger.info(f"Analyzing {label} with LSTM...")
+        """Generic method to run LSTM analysis on a PID.
+        Falls back to statistical anomaly detection when data is too small for LSTM."""
+        logger.info(f"Analyzing {label}...")
         
         data = self.pid_analyzer.get_pid_data(pid_name)
         if data.empty:
             logger.warning(f"No {label} data found")
             return None
             
-        data = data[data > 0] # Filter valid data
-        if len(data) < 50:
-            logger.warning(f"Not enough data for {label} analysis")
+        data = data[data > 0]
+        if len(data) < 30:
+            logger.warning(f"Not enough data for {label} analysis ({len(data)} points)")
             return None
-            
+
+        # For small datasets (<200 points), use statistical detection instead of LSTM
+        # LSTM needs hundreds of samples to learn meaningful patterns; with <200 points
+        # it memorizes rather than generalizes
+        if len(data) < 200:
+            logger.info(f"Using statistical fallback for {label} ({len(data)} points < 200 LSTM minimum)")
+            return self._statistical_anomaly_detection(data, pid_name, label, threshold)
+
         predictor = LSTMPredictor(sequence_length=seq_len)
         if predictor.train(data, epochs=epochs, verbose=0):
             anomalies = predictor.detect_anomalies(data, threshold=threshold)
             
             result = {
+                'method': 'lstm',
                 'anomaly_count': len(anomalies),
                 'anomaly_percentage': (len(anomalies) / len(data)) * 100,
                 'anomaly_indices': anomalies,
-                'current_value': data.iloc[-1]
+                'current_value': float(data.iloc[-1]),
             }
             
-            # Predict next value
             recent = data.tail(seq_len).values
             next_val = predictor.predict_next(recent)
             if next_val is not None:
@@ -341,17 +334,90 @@ class VehicleLSTMAnalyzer:
             
             self.predictors[pid_name] = predictor
             self.results[pid_name] = result
-            logger.info(f"✓ {label} Analysis Complete. Anomalies: {len(anomalies)}")
+            logger.info(f"✓ {label} LSTM Analysis: {len(anomalies)} anomalies")
             return result
         return None
 
-    def analyze_rpm_stability(self):
-        """Analyze and predict RPM stability"""
-        self._run_generic_analysis('engine_speed', 'RPM', seq_len=10, threshold=2.5)
+    def _statistical_anomaly_detection(self, data: pd.Series, pid_name: str,
+                                        label: str, threshold: float) -> Optional[Dict[str, Any]]:
+        """Z-score based anomaly detection for small datasets where LSTM would overfit."""
+        values = data.values
+        mean = np.mean(values)
+        std = np.std(values)
+        
+        if std == 0:
+            return None
+            
+        z_scores = np.abs((values - mean) / std)
+        anomaly_indices = list(np.where(z_scores > threshold)[0])
+        
+        # Simple trend: linear regression slope
+        x = np.arange(len(values))
+        slope = np.polyfit(x, values, 1)[0] if len(values) > 2 else 0
+        
+        result = {
+            'method': 'statistical_zscore',
+            'anomaly_count': len(anomaly_indices),
+            'anomaly_percentage': (len(anomaly_indices) / len(data)) * 100,
+            'anomaly_indices': anomaly_indices,
+            'current_value': float(data.iloc[-1]),
+            'mean': float(mean),
+            'std': float(std),
+            'trend': 'rising' if slope > 0.1 else 'falling' if slope < -0.1 else 'stable',
+        }
+        
+        self.results[pid_name] = result
+        logger.info(f"✓ {label} Statistical Analysis: {len(anomaly_indices)} anomalies (z>{threshold})")
+        return result
 
-    def analyze_temperature_trends(self):
-        """Predict temperature trends"""
-        self._run_generic_analysis('coolant_temp', 'Temperature', seq_len=15, threshold=2.0)
+    def analyze_multivariate(self, sensors: List[str] = ['engine_speed', 'coolant_temp', 'calculated_load'], 
+                            seq_len: int = 20, epochs: int = 50, threshold: float = 3.0):
+        """Train a single multivariate LSTM across multiple sensors."""
+        logger.info(f"Running multivariate analysis on {sensors}...")
+        
+        # Gather data for all requested sensors
+        sensor_dfs = []
+        valid_sensors = []
+        for pid in sensors:
+            data = self.pid_analyzer.get_pid_data(pid)
+            if not data.empty and len(data) > 50:
+                sensor_dfs.append(data.rename(pid))
+                valid_sensors.append(pid)
+        
+        if not sensor_dfs:
+            logger.warning("No sufficient sensor data for multivariate analysis")
+            return
+            
+        # Align all sensors by joining
+        multivariate_df = pd.concat(sensor_dfs, axis=1).dropna()
+        
+        if len(multivariate_df) < 200:
+            logger.info("Insufficient aligned data for multivariate LSTM, falling back to univariate statistical analysis")
+            for pid in valid_sensors:
+                self._run_generic_analysis(pid, pid.upper(), seq_len=seq_len, threshold=threshold)
+            return
+
+        predictor = LSTMPredictor(sequence_length=seq_len)
+        if predictor.train(multivariate_df, epochs=epochs, verbose=0):
+            anomalies = predictor.detect_anomalies(multivariate_df, threshold=threshold)
+            
+            result = {
+                'method': 'multivariate_lstm',
+                'sensors': valid_sensors,
+                'anomaly_count': len(anomalies),
+                'anomaly_percentage': (len(anomalies) / len(multivariate_df)) * 100,
+                'anomaly_indices': anomalies,
+            }
+            
+            # Predict next values
+            recent = multivariate_df.tail(seq_len).values
+            next_vals = predictor.predict_next(recent)
+            if next_vals is not None:
+                result['predicted_next'] = dict(zip(valid_sensors, next_vals.tolist()))
+            
+            self.predictors['multivariate'] = predictor
+            self.results['multivariate'] = result
+            logger.info(f"✓ Multivariate LSTM Analysis: {len(anomalies)} anomalies detected")
 
     def analyze_misfire_patterns(self):
         """Predict misfire patterns"""
@@ -362,6 +428,8 @@ class VehicleLSTMAnalyzer:
             
         data = data.fillna(0)
         if data.sum() > 0:
+            # For misfires, we usually have very sparse data, so statistical is often better
+            # but we'll try univariate LSTM if enough points
             self._run_generic_analysis('misfire_count', 'Misfires', seq_len=10, threshold=1.5)
         else:
             logger.info("No misfires detected in data")
@@ -402,9 +470,10 @@ def run_lstm_analysis(dataframe: pd.DataFrame):
 
     analyzer = VehicleLSTMAnalyzer(dataframe)
 
-    # Run analyses
-    analyzer.analyze_rpm_stability()
-    analyzer.analyze_temperature_trends()
+    # Run multivariate analysis as prioritized in review
+    analyzer.analyze_multivariate()
+    
+    # Also run misfire patterns specifically as it's critical
     analyzer.analyze_misfire_patterns()
 
     # Generate report

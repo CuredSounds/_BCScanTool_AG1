@@ -7,7 +7,6 @@ from pathlib import Path
 import sys
 
 # Ensure src can be imported
-sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
 from src import config
 
 try:

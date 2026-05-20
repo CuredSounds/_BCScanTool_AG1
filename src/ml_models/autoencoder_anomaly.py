@@ -5,9 +5,12 @@ Unsupervised learning to detect unusual vehicle behavior patterns
 
 import numpy as np
 import pandas as pd
+import logging
 from typing import Tuple, List
 import warnings
 warnings.filterwarnings('ignore')
+
+logger = logging.getLogger("BCScanTool.Autoencoder")
 
 try:
     from tensorflow import keras
@@ -102,10 +105,15 @@ class AutoencoderAnomalyDetector:
         reconstructions = self.model.predict(data_scaled, verbose=0)
         reconstruction_errors = np.mean(np.square(data_scaled - reconstructions), axis=1)
 
-        # Set threshold at 95th percentile
-        self.threshold = np.percentile(reconstruction_errors, 95)
+        # Threshold: mean + 3*std of reconstruction error (statistical outlier boundary)
+        # This is more principled than a fixed percentile which always flags 5% as anomalous
+        self.threshold = np.mean(reconstruction_errors) + 3 * np.std(reconstruction_errors)
+        self.train_error_mean = float(np.mean(reconstruction_errors))
+        self.train_error_std = float(np.std(reconstruction_errors))
 
         self.is_trained = True
+        logger.info(f"Autoencoder trained. Threshold: {self.threshold:.6f} "
+                     f"(mean={self.train_error_mean:.6f}, std={self.train_error_std:.6f})")
         return True
 
     def detect_anomalies(self, data):
@@ -138,63 +146,68 @@ class AutoencoderAnomalyDetector:
 
 def run_autoencoder_analysis(dataframe):
     """
-    Run autoencoder anomaly detection on vehicle data
-
-    Args:
-        dataframe: Vehicle sensor data
+    Run autoencoder anomaly detection on vehicle data.
+    Uses parameter tiers for feature selection instead of arbitrary column picking.
     """
     if not KERAS_AVAILABLE:
-        print("\n" + "="*70)
-        print("AUTOENCODER ANOMALY DETECTION - TENSORFLOW REQUIRED")
-        print("="*70)
-        print("\nTensorFlow not installed. Skipping autoencoder analysis...")
+        logger.warning("TensorFlow not installed. Skipping autoencoder analysis.")
         return None
 
-    print("\n" + "="*70)
-    print("AUTOENCODER ANOMALY DETECTION")
-    print("="*70)
+    logger.info("=" * 70)
+    logger.info("AUTOENCODER ANOMALY DETECTION")
 
-    # Select numeric columns
-    numeric_cols = dataframe.select_dtypes(include=[np.number]).columns
-    # Filter relevant columns (avoid IDs and metadata)
-    sensor_cols = [c for c in numeric_cols if 'Row' not in c and 'Unnamed' not in c][:10]  # Limit to 10 features
+    # Use parameter tiers for feature selection
+    from src import config
+    tiers = config.load_parameter_tiers()
+    tier_a_cols = tiers.get("tier_a", [])
+
+    if tier_a_cols:
+        # Use Tier A columns that exist in the dataframe
+        sensor_cols = [c for c in tier_a_cols if c in dataframe.columns]
+        if len(sensor_cols) < 3:
+            # Fallback: try matching by substring
+            sensor_cols = []
+            for tier_col in tier_a_cols:
+                for df_col in dataframe.columns:
+                    if tier_col.lower() in df_col.lower():
+                        sensor_cols.append(df_col)
+                        break
+    else:
+        # Legacy fallback: pick numeric columns, avoid metadata
+        numeric_cols = dataframe.select_dtypes(include=[np.number]).columns
+        sensor_cols = [c for c in numeric_cols
+                       if 'Row' not in c and 'Unnamed' not in c
+                       and 'distance' not in c.lower() and 'time' not in c.lower()]
 
     if len(sensor_cols) < 3:
-        print("Not enough sensor data for autoencoder")
+        logger.warning(f"Not enough sensor columns for autoencoder: {len(sensor_cols)}")
         return None
 
-    # Prepare data
     data = dataframe[sensor_cols].dropna()
-
     if len(data) < 100:
-        print(f"Not enough samples: {len(data)} (need at least 100)")
+        logger.warning(f"Not enough samples: {len(data)} (need at least 100)")
         return None
 
-    print(f"Training on {len(sensor_cols)} sensors, {len(data)} samples")
+    logger.info(f"Training on {len(sensor_cols)} sensors, {len(data)} samples")
 
-    # Train autoencoder
     detector = AutoencoderAnomalyDetector(encoding_dim=min(8, len(sensor_cols)))
     success = detector.train(data.values, epochs=30, verbose=0)
-
     if not success:
         return None
 
-    # Detect anomalies
     errors, anomalies = detector.detect_anomalies(data.values)
-
-    anomaly_count = np.sum(anomalies)
+    anomaly_count = int(np.sum(anomalies))
     anomaly_pct = (anomaly_count / len(data)) * 100
 
-    print(f"\n✓ Analysis complete")
-    print(f"  Anomalies detected: {anomaly_count} ({anomaly_pct:.1f}%)")
-    print(f"  Threshold: {detector.threshold:.4f}")
-
+    logger.info(f"Analysis complete: {anomaly_count} anomalies ({anomaly_pct:.1f}%)")
+    logger.info(f"Threshold: {detector.threshold:.6f}")
     if anomaly_pct > 15:
-        print(f"  ⚠️  High anomaly rate indicates unusual sensor patterns")
+        logger.warning("High anomaly rate indicates unusual sensor patterns")
 
     return {
         'detector': detector,
         'anomaly_count': anomaly_count,
         'anomaly_percentage': anomaly_pct,
-        'anomaly_indices': np.where(anomalies)[0].tolist()
+        'anomaly_indices': np.where(anomalies)[0].tolist(),
+        'features_used': sensor_cols,
     }

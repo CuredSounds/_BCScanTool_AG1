@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bcscan-tool"
+version = "1.0.0"
+description = "Vehicle diagnostic platform for Launch X431 data analysis"
+authors = [
+    {name = "BCScanTool Team"}
+]
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "tensorflow",
+    "joblib",
+    "requests",
+    "plotly",
+    "streamlit",
+    "sqlalchemy",
+    "scipy",
+    "onnxruntime"
+]
+requires-python = ">=3.9"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
