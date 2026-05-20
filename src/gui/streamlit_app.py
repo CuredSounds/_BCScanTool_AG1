@@ -6,6 +6,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
 import sys
+import socket
+import time
 from pathlib import Path
 from src import config
 from src.utils.pdf_generator import generate_health_report
@@ -218,7 +220,7 @@ if diag_data:
                 use_container_width=True
             )
             
-    tab1, tab2, tab3 = st.tabs(["📊 Overview & Analytics", "🌐 Vehicle Topology", "🤖 AI Diagnostic Assistant"])
+    tab1, tab_live, tab2, tab3 = st.tabs(["📊 Overview & Analytics", "🔌 Live Cab Mode", "🌐 Vehicle Topology", "🤖 AI Diagnostic Assistant"])
     
     with tab1:
         # Top Metrics Row
@@ -280,6 +282,209 @@ if diag_data:
             )
         else:
             st.success("No active diagnostic issues detected.")
+
+    with tab_live:
+        st.markdown("## 🔌 Live Telemetry & Cab Mode Diagnostics")
+        st.markdown("*Optimized for high-contrast viewing on laptop screens inside the truck cab. Connects directly to local ELM327 Wi-Fi streams.*")
+        
+        # Settings in a clean row
+        set_col1, set_col2, set_col3 = st.columns([2, 1, 1])
+        with set_col1:
+            stream_ip = st.text_input("OBD2 Dongle / Server IP", "127.0.0.1")
+        with set_col2:
+            stream_port = st.number_input("TCP Port", value=35000)
+        with set_col3:
+            st.markdown("<br>", unsafe_allow_html=True)
+            stream_active = st.toggle("🔌 Connect Live Stream", value=False)
+            
+        status_container = st.empty()
+        
+        if stream_active:
+            status_container.info("Establishing connection to OBD2 stream dongle...")
+            
+            try:
+                # Open Socket
+                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                s.settimeout(2.0)
+                s.connect((stream_ip, int(stream_port)))
+                status_container.success(f"✅ CONNECTED! Streaming live 2Hz Tacoma telemetry from {stream_ip}:{stream_port}")
+                
+                # Setup placeholders for massive high-contrast metrics
+                st.markdown("### 🏎️ Core Physics & Mechanical Drag Indicators")
+                metric_cols = st.columns(3)
+                with metric_cols[0]:
+                    load_placeholder = st.empty()
+                with metric_cols[1]:
+                    stft_placeholder = st.empty()
+                with metric_cols[2]:
+                    ltft_placeholder = st.empty()
+                    
+                st.markdown("### 📈 Transient Rate-of-Change Physics (Derived Deltas)")
+                delta_cols = st.columns(3)
+                with delta_cols[0]:
+                    d_maf_placeholder = st.empty()
+                with delta_cols[1]:
+                    d_rpm_placeholder = st.empty()
+                with delta_cols[2]:
+                    d_load_placeholder = st.empty()
+                    
+                st.markdown("### 📊 Time-Series Diagnostics Waveform")
+                chart_placeholder = st.empty()
+                
+                # Stream buffer & lists
+                buffer = ""
+                headers = []
+                data_points = []
+                
+                while stream_active:
+                    try:
+                        data = s.recv(4096).decode("utf-8")
+                        if not data:
+                            status_container.error("🔌 Stream connection closed by the dongle/server.")
+                            break
+                        buffer += data
+                        
+                        while "\n" in buffer:
+                            line, buffer = buffer.split("\n", 1)
+                            line = line.strip()
+                            if not line:
+                                continue
+                            
+                            # Parse CSV columns
+                            parts = line.split(",")
+                            if not headers:
+                                headers = [h.strip() for h in parts]
+                                continue
+                            
+                            # Handle potential column mismatches
+                            if len(parts) != len(headers):
+                                continue
+                                
+                            row_dict = dict(zip(headers, parts))
+                            
+                            # Helper to extract value safely by matching column name keywords
+                            def get_sensor_val(d, kw, default=0.0):
+                                for k, v in d.items():
+                                    if kw.lower() in k.lower():
+                                        try:
+                                            return float(v)
+                                        except:
+                                            pass
+                                return default
+                                
+                            load_val = get_sensor_val(row_dict, "Calculate Load")
+                            stft_val = get_sensor_val(row_dict, "Short FT (Bank1")
+                            ltft_val = get_sensor_val(row_dict, "Long FT (Bank1")
+                            
+                            # Deltas from derived columns (from Task 1)
+                            d_maf = get_sensor_val(row_dict, "Delta_MAF", 0.0)
+                            d_rpm = get_sensor_val(row_dict, "Delta_RPM", 0.0)
+                            d_load = get_sensor_val(row_dict, "Delta_Calculate_Load", 0.0)
+                            
+                            # Fallback delta logic if not streamed
+                            if len(data_points) > 0:
+                                prev = data_points[-1]
+                                if d_maf == 0.0:
+                                    maf_now = get_sensor_val(row_dict, "MAF")
+                                    maf_prev = get_sensor_val(prev, "MAF")
+                                    d_maf = maf_now - maf_prev
+                                if d_rpm == 0.0:
+                                    rpm_now = get_sensor_val(row_dict, "Engine Speed")
+                                    rpm_prev = get_sensor_val(prev, "Engine Speed")
+                                    d_rpm = rpm_now - rpm_prev
+                                if d_load == 0.0:
+                                    d_load = load_val - prev.get("Calculate Load [%]", load_val)
+                            
+                            # Save data point for streaming chart
+                            point = {
+                                "Timestamp": datetime.now(),
+                                "Calculate Load [%]": load_val,
+                                "Short FT (Bank1) [%]": stft_val,
+                                "Long FT (Bank1) [%]": ltft_val,
+                                "Delta_MAF": d_maf,
+                                "Delta_RPM": d_rpm,
+                                "Delta_Calculate_Load": d_load,
+                                "MAF": get_sensor_val(row_dict, "MAF"),
+                                "Engine Speed": get_sensor_val(row_dict, "Engine Speed")
+                            }
+                            data_points.append(point)
+                            if len(data_points) > 60:
+                                data_points.pop(0)
+                                
+                            # 1. High-Contrast Premium Gauges (optimized for cab viewing)
+                            load_color = "#ef4444" if load_val > 80.0 else "#eab308" if load_val > 50.0 else "#22c55e"
+                            stft_color = "#ef4444" if abs(stft_val) > 15.0 else "#eab308" if abs(stft_val) > 8.0 else "#22c55e"
+                            ltft_color = "#ef4444" if abs(ltft_val) > 10.0 else "#eab308" if abs(ltft_val) > 5.0 else "#22c55e"
+                            
+                            load_placeholder.markdown(f"""
+                            <div style="background-color:#1E293B; border-top: 10px solid {load_color}; padding:30px 10px; border-radius:15px; text-align:center; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);">
+                                <span style="font-size:20px; font-weight:800; color:#94A3B8; text-transform:uppercase; letter-spacing:1px;">Engine Load</span>
+                                <h1 style="font-size:84px; margin:15px 0; color:#F8FAFC; font-weight:900; line-height:1;">{load_val:.1f}%</h1>
+                            </div>
+                            """, unsafe_allow_html=True)
+                            
+                            stft_placeholder.markdown(f"""
+                            <div style="background-color:#1E293B; border-top: 10px solid {stft_color}; padding:30px 10px; border-radius:15px; text-align:center; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);">
+                                <span style="font-size:20px; font-weight:800; color:#94A3B8; text-transform:uppercase; letter-spacing:1px;">Short FT B1</span>
+                                <h1 style="font-size:84px; margin:15px 0; color:#F8FAFC; font-weight:900; line-height:1;">{stft_val:+.1f}%</h1>
+                            </div>
+                            """, unsafe_allow_html=True)
+                            
+                            ltft_placeholder.markdown(f"""
+                            <div style="background-color:#1E293B; border-top: 10px solid {ltft_color}; padding:30px 10px; border-radius:15px; text-align:center; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);">
+                                <span style="font-size:20px; font-weight:800; color:#94A3B8; text-transform:uppercase; letter-spacing:1px;">Long FT B1</span>
+                                <h1 style="font-size:84px; margin:15px 0; color:#F8FAFC; font-weight:900; line-height:1;">{ltft_val:+.1f}%</h1>
+                            </div>
+                            """, unsafe_allow_html=True)
+                            
+                            # 2. Update rate-of-change physics indicators
+                            d_maf_placeholder.metric(label="Δ MAF (gm/s/s)", value=f"{d_maf:+.2f}")
+                            d_rpm_placeholder.metric(label="Δ RPM (rpm/s)", value=f"{d_rpm:+.1f}")
+                            d_load_placeholder.metric(label="Δ Load (%/s)", value=f"{d_load:+.2f}")
+                            
+                            # 3. Update Chart
+                            chart_df = pd.DataFrame(data_points)
+                            fig = px.line(
+                                chart_df, 
+                                x="Timestamp", 
+                                y=["Calculate Load [%]", "Short FT (Bank1) [%]", "Long FT (Bank1) [%]"],
+                                title="Real-Time Telemetry Trend Tracker",
+                                labels={"value": "Value (%)", "variable": "Sensor Parameter"}
+                            )
+                            fig.update_layout(
+                                paper_bgcolor="rgba(0,0,0,0)", 
+                                plot_bgcolor="#0F172A", 
+                                font={'color': "#F1F5F9", 'size': 14},
+                                height=450,
+                                margin=dict(l=40, r=40, t=50, b=40),
+                                legend=dict(orientation="h", y=1.1, x=0.5, xanchor="center")
+                            )
+                            fig.update_xaxes(showgrid=True, gridcolor="#334155")
+                            fig.update_yaxes(showgrid=True, gridcolor="#334155")
+                            chart_placeholder.plotly_chart(fig, use_container_width=True)
+                            
+                    except socket.timeout:
+                        continue
+                    except Exception as e:
+                        status_container.error(f"Stream error: {e}")
+                        break
+            except Exception as e:
+                status_container.error(f"❌ Connection failed: {e}. Please ensure the Mock ELM327 server is running on port {stream_port} or check your network settings.")
+                st.info("💡 **To launch the Mock Server:** Open a new terminal and run: `python3 scripts/mock_elm327.py` or launch the master control panel.")
+        else:
+            status_container.warning("🔌 Live stream is currently offline. Toggle 'Connect Live Stream' to begin.")
+            
+            # Display helpful instructions on how to use live stream mode
+            st.markdown("""
+            ### 📖 How to use Live Cab Mode
+            1. **Launch the Mock Server** in a separate terminal:
+               ```bash
+               python3 scripts/mock_elm327.py
+               ```
+               *This reads a Toyota Tacoma baseline CSV and streams it sequentially at a 2Hz frequency, seamlessly looping.*
+            2. Toggle **Connect Live Stream** above.
+            3. Sit back and watch the metrics update in real-time with large, high-contrast, high-visibility styling suitable for live in-truck diagnostics.
+            """)
 
     with tab2:
         st.subheader("Vehicle Module Network Topology")

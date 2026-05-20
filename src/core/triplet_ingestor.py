@@ -172,6 +172,11 @@ def load_all_triplets(
                 continue
             filtered_df = filtered_df.iloc[config.INIT_ROWS_TO_DROP:].reset_index(drop=True)
 
+            # Calculate derived physics features strictly after Gate 2 drop
+            filtered_df["Delta_MAF"] = filtered_df["MAF [gm/s]"].diff().fillna(0.0)
+            filtered_df["Delta_RPM"] = filtered_df["Engine Speed [rpm]"].diff().fillna(0.0)
+            filtered_df["Delta_Calculate_Load"] = filtered_df["Calculate Load [%]"].diff().fillna(0.0)
+
             # ── 3. Gate 4: Drop additional 60 rows for fault transients (first 30s) ──
             if role == "fault":
                 n_drop_fault = 60
@@ -180,9 +185,9 @@ def load_all_triplets(
                     continue
                 # If engine is already warm, we still preserve the settled fault signature after 30s transient.
                 filtered_df = filtered_df.iloc[n_drop_fault:].reset_index(drop=True)
-                logger.info(f"  ✓ {role.capitalize()} file: dropped 30 rows (init) + {n_drop_fault} rows (transient)")
+                logger.info(f"  ✓ {role.capitalize()} file: dropped 30 rows (init) + {n_drop_fault} rows (transient) and calculated derived features")
             else:
-                logger.info(f"  ✓ {role.capitalize()} file: dropped 30 rows (init)")
+                logger.info(f"  ✓ {role.capitalize()} file: dropped 30 rows (init) and calculated derived features")
 
             # ── 4. Labeling & Anti-Leakage session assignment ──
             filtered_df["target_class"] = label

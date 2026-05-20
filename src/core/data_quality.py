@@ -72,7 +72,17 @@ def preprocess_scan(df: pd.DataFrame, filepath: str = "",
     n_drop = config.INIT_ROWS_TO_DROP
     if len(df) > n_drop:
         df = df.iloc[n_drop:].reset_index(drop=True)
-        report.ok("init_drop", f"Dropped first {n_drop} initialization rows")
+        
+        # Calculate derived physics features strictly after Gate 2 drop
+        maf_col = [c for c in df.columns if "maf" in c.lower() or "mass air flow" in c.lower()]
+        rpm_col = [c for c in df.columns if "rpm" in c.lower() or "engine speed" in c.lower()]
+        load_col = [c for c in df.columns if "calculate load" in c.lower() or "engine load" in c.lower() or "calculated load" in c.lower()]
+        
+        df["Delta_MAF"] = df[maf_col[0]].diff().fillna(0.0) if maf_col else 0.0
+        df["Delta_RPM"] = df[rpm_col[0]].diff().fillna(0.0) if rpm_col else 0.0
+        df["Delta_Calculate_Load"] = df[load_col[0]].diff().fillna(0.0) if load_col else 0.0
+        
+        report.ok("init_drop", f"Dropped first {n_drop} initialization rows and calculated derived features")
     else:
         report.fail("init_drop", f"Only {len(df)} rows, cannot drop {n_drop}")
         return None, report
@@ -150,6 +160,8 @@ def preprocess_scan(df: pd.DataFrame, filepath: str = "",
     tiers = config.load_parameter_tiers()
     ml_columns = tiers["tier_a"] if only_tier_a else (tiers["tier_a"] + tiers["tier_b"])
     if ml_columns:
+        # Include our newly derived features in the list of kept columns
+        ml_columns = list(ml_columns) + ["Delta_MAF", "Delta_RPM", "Delta_Calculate_Load"]
         available_ml = [c for c in ml_columns if c in df.columns]
         dropped = [c for c in df.columns if c not in ml_columns and c not in ("Row",)]
         report.columns_kept = len(available_ml)

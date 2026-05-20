@@ -15,7 +15,8 @@ def print_menu():
     print("  4. 🎯  Train Vehicle-Specific LSTM (200+ Features)")
     print("  5. 🗄️  Seed/Reset SQLite Database (From CSV)")
     print("  6. 🛠️  Convert Raw .x431 Files to CSV")
-    print("  7. 🚪  Exit")
+    print("  7. 🔌  Launch Mock ELM327 Wi-Fi Server (TCP 35000)")
+    print("  8. 🚪  Exit")
     print("=" * 60)
 
 def get_python_exec(project_root):
@@ -68,11 +69,16 @@ def main():
                     time.sleep(1)
                     
                 elif choice == '7':
+                    print("\nStarting Mock ELM327 Wi-Fi Server...")
+                    subprocess.run([python_exec, str(project_root / "scripts" / "mock_elm327.py")])
+                    time.sleep(1)
+                    
+                elif choice == '8':
                     print("\nShutting down Master Control Panel. Goodbye!\n")
                     should_exit = True
                     break
                 else:
-                    print(f"\n⚠️ Invalid option '{choice}'. Please enter numbers between 1 and 7.")
+                    print(f"\n⚠️ Invalid option '{choice}'. Please enter numbers between 1 and 8.")
             
             if should_exit:
                 break
