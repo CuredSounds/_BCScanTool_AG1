@@ -1,6 +1,16 @@
 import re
 from pathlib import Path
 
+def f_to_c(f: float) -> float:
+    """Convert Fahrenheit to Celsius"""
+    if f is None: return None
+    return (f - 32) * 5 / 9
+
+def c_to_f(c: float) -> float:
+    """Convert Celsius to Fahrenheit"""
+    if c is None: return None
+    return (c * 9 / 5) + 32
+
 def extract_vehicle_metadata(filepath: Path):
     """
     Extract make, model, and label from filename and directory.

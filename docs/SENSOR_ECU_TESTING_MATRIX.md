@@ -1,13 +1,13 @@
 # Sensor & ECU Testing Matrix - Living Document
+
 **BCScanTool v2.0 - Comprehensive Fault Induction Protocol**
 
-**Created:** January 13, 2026
-**Last Updated:** January 13, 2026
-**Version:** 1.0
+**Created:** January 13, 2026 **Last Updated:** January 13, 2026 **Version:** 1.0
 
 ---
 
 ## 🎯 Purpose
+
 This living document catalogs every possible sensor manipulation, ECU test, and fault condition we can safely induce to train and validate our ML models. Add new tests as you discover them!
 
 ---
@@ -15,23 +15,26 @@ This living document catalogs every possible sensor manipulation, ECU test, and 
 ## 📊 Test Categories
 
 ### Risk Levels:
+
 - 🟢 **LOW:** Safe, quick disconnect/reconnect, no damage risk
 - 🟡 **MODERATE:** Requires care, brief test only, minor stress on components
 - 🔴 **HIGH:** Potential for damage if done incorrectly or too long, expert only
 
 ### Test Types:
-- **[E]** Electrical (unplugs, shorts, voltage manipulation)
-- **[M]** Mechanical (restrictions, blockages, physical interference)
-- **[S]** Simulated (fake signals, CAN injection)
-- **[ECU]** ECU manipulation (software, parameters, reflash)
+
+- **\[E\]** Electrical (unplugs, shorts, voltage manipulation)
+- **\[M\]** Mechanical (restrictions, blockages, physical interference)
+- **\[S\]** Simulated (fake signals, CAN injection)
+- **\[ECU\]** ECU manipulation (software, parameters, reflash)
 
 ---
 
 ## 1. AIR INTAKE SYSTEM TESTS 💨
 
-### 1.1 MAF Sensor Tests [E]
+### 1.1 MAF Sensor Tests \[E\]
 
 #### Test 1.1.1: Full MAF Disconnect 🟢
+
 ```
 Risk: LOW
 Duration: 2-3 minutes
@@ -55,6 +58,7 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
 #### Test 1.1.2: MAF Signal Wire Short 🟡
+
 ```
 Risk: MODERATE
 Duration: 1-2 minutes
@@ -78,7 +82,8 @@ ML Training Value: HIGH - Different fault signature than disconnect
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 1.1.3: MAF Contamination Simulation [M] 🟢
+#### Test 1.1.3: MAF Contamination Simulation \[M\] 🟢
+
 ```
 Risk: LOW
 Duration: 3-5 minutes
@@ -102,7 +107,8 @@ ML Training Value: MODERATE - Intermittent fault pattern
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 1.1.4: Restricted Airflow [M] 🟢
+#### Test 1.1.4: Restricted Airflow \[M\] 🟢
+
 ```
 Risk: LOW
 Duration: 2-3 minutes
@@ -130,9 +136,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 2. OXYGEN SENSOR TESTS 🔥
 
-### 2.1 Bank 1 Sensor 1 (Front O2) [E]
+### 2.1 Bank 1 Sensor 1 (Front O2) \[E\]
 
 #### Test 2.1.1: Full O2 Disconnect 🟢
+
 ```
 Risk: LOW
 Duration: 2-3 minutes
@@ -155,6 +162,7 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
 #### Test 2.1.2: O2 Sensor Heater Failure Simulation 🟡
+
 ```
 Risk: MODERATE
 Duration: 3-5 minutes (cold start only)
@@ -177,7 +185,8 @@ ML Training Value: MODERATE - Degraded sensor vs total failure
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 2.1.3: Bank 2 Sensor 1 (Other Front O2) [E] 🟢
+#### Test 2.1.3: Bank 2 Sensor 1 (Other Front O2) \[E\] 🟢
+
 ```
 Risk: LOW
 Duration: 2-3 minutes
@@ -190,7 +199,8 @@ ML Training Value: HIGH - Multi-bank fault detection
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 2.1.4: Downstream O2 Sensors (After Cat) [E] 🟢
+#### Test 2.1.4: Downstream O2 Sensors (After Cat) \[E\] 🟢
+
 ```
 Risk: LOW
 Duration: 3-5 minutes
@@ -215,9 +225,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 3. THROTTLE & ACCELERATOR TESTS 🚗
 
-### 3.1 Throttle Position Sensor [E]
+### 3.1 Throttle Position Sensor \[E\]
 
 #### Test 3.1.1: TPS Disconnect 🟡
+
 ```
 Risk: MODERATE
 Duration: 1-2 minutes MAX
@@ -244,6 +255,7 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
 #### Test 3.1.2: Accelerator Position Sensor Disconnect 🟡
+
 ```
 Risk: MODERATE
 Duration: 1-2 minutes
@@ -271,9 +283,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 4. FUEL SYSTEM TESTS ⛽
 
-### 4.1 Fuel Injector Tests [E]
+### 4.1 Fuel Injector Tests \[E\]
 
 #### Test 4.1.1: Single Injector Disconnect 🔴
+
 ```
 Risk: HIGH - Can cause misfire, catalyst damage if too long
 Duration: 30-60 seconds MAX
@@ -297,7 +310,8 @@ ML Training Value: VERY HIGH - Misfire detection critical
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 4.1.2: Fuel Pressure Regulator Vacuum Line Disconnect [M] 🟢
+#### Test 4.1.2: Fuel Pressure Regulator Vacuum Line Disconnect \[M\] 🟢
+
 ```
 Risk: LOW
 Duration: 2-3 minutes
@@ -323,9 +337,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 5. IGNITION SYSTEM TESTS ⚡
 
-### 5.1 Ignition Coil Tests [E]
+### 5.1 Ignition Coil Tests \[E\]
 
 #### Test 5.1.1: Single Coil Disconnect 🔴
+
 ```
 Risk: HIGH - Misfire, catalyst damage risk
 Duration: 30-60 seconds MAX
@@ -349,7 +364,8 @@ ML Training Value: VERY HIGH - Compare vs injector misfire
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 5.1.2: Spark Plug Wire Resistance [M] 🟡
+#### Test 5.1.2: Spark Plug Wire Resistance \[M\] 🟡
+
 ```
 Risk: MODERATE
 Duration: 2-3 minutes
@@ -375,9 +391,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 6. COOLING SYSTEM TESTS 🌡️
 
-### 6.1 Temperature Sensor Tests [E]
+### 6.1 Temperature Sensor Tests \[E\]
 
 #### Test 6.1.1: Coolant Temp Sensor Disconnect 🟢
+
 ```
 Risk: LOW
 Duration: 2-3 minutes
@@ -400,7 +417,8 @@ ML Training Value: HIGH - Critical sensor for fuel/ignition timing
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 6.1.2: Coolant Temp Sensor Resistance Change [M] 🟡
+#### Test 6.1.2: Coolant Temp Sensor Resistance Change \[M\] 🟡
+
 ```
 Risk: MODERATE
 Duration: 3-5 minutes
@@ -424,6 +442,7 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
 #### Test 6.1.3: Intake Air Temp Sensor Disconnect 🟢
+
 ```
 Risk: LOW
 Duration: 2-3 minutes
@@ -448,9 +467,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 7. VACUUM & PRESSURE TESTS 💨
 
-### 7.1 Vacuum Leak Tests [M]
+### 7.1 Vacuum Leak Tests \[M\]
 
 #### Test 7.1.1: PCV Valve Hose Disconnect 🟢
+
 ```
 Risk: LOW
 Duration: 2-3 minutes
@@ -474,6 +494,7 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
 #### Test 7.1.2: Brake Booster Vacuum Line Disconnect 🟡
+
 ```
 Risk: MODERATE - Affects brake assist!
 Duration: 1-2 minutes, vehicle stationary
@@ -499,7 +520,8 @@ ML Training Value: HIGH - Varying vacuum leak sizes
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 7.1.3: Intake Manifold Gasket Leak Simulation [M] 🔴
+#### Test 7.1.3: Intake Manifold Gasket Leak Simulation \[M\] 🔴
+
 ```
 Risk: HIGH - Do not over-rev engine
 Duration: 1-2 minutes MAX
@@ -528,9 +550,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 8. EXHAUST & EMISSIONS TESTS 🏭
 
-### 8.1 EGR System Tests [M]
+### 8.1 EGR System Tests \[M\]
 
 #### Test 8.1.1: EGR Valve Disconnect 🟢
+
 ```
 Risk: LOW
 Duration: 3-5 minutes
@@ -553,7 +576,8 @@ ML Training Value: MODERATE - Emissions system fault
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 8.1.2: EGR Valve Manually Opened [M] 🟡
+#### Test 8.1.2: EGR Valve Manually Opened \[M\] 🟡
+
 ```
 Risk: MODERATE
 Duration: 1-2 minutes
@@ -579,9 +603,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 9. CAMSHAFT & TIMING TESTS ⚙️
 
-### 9.1 Variable Valve Timing (VVT) Tests [E]
+### 9.1 Variable Valve Timing (VVT) Tests \[E\]
 
 #### Test 9.1.1: VVT Solenoid Disconnect 🟢
+
 ```
 Risk: LOW
 Duration: 3-5 minutes
@@ -607,9 +632,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 10. ELECTRICAL SYSTEM TESTS 🔋
 
-### 10.1 Charging System Tests [E]
+### 10.1 Charging System Tests \[E\]
 
 #### Test 10.1.1: Alternator Disconnect (Engine Running) 🔴
+
 ```
 Risk: HIGH - Can damage electrical system
 Duration: 30 seconds MAX
@@ -635,7 +661,8 @@ Note: ALTERNATOR WAS ACTUAL ISSUE - Good test validation!
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 10.1.2: Battery Terminal Corrosion Simulation [E] 🟢
+#### Test 10.1.2: Battery Terminal Corrosion Simulation \[E\] 🟢
+
 ```
 Risk: LOW
 Duration: 2-3 minutes
@@ -662,9 +689,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 11. TRANSMISSION TESTS (If Automatic) 🔄
 
-### 11.1 Transmission Sensor Tests [E]
+### 11.1 Transmission Sensor Tests \[E\]
 
 #### Test 11.1.1: ATF Temperature Sensor Disconnect 🟢
+
 ```
 Risk: LOW
 Duration: 2-3 minutes
@@ -690,9 +718,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 12. CAN BUS & NETWORK TESTS 🔌
 
-### 12.1 CAN Bus Manipulation [S]
+### 12.1 CAN Bus Manipulation \[S\]
 
 #### Test 12.1.1: CAN Message Injection 🟡
+
 ```
 Risk: MODERATE - Requires CAN interface
 Duration: Variable
@@ -722,7 +751,8 @@ ML Training Value: VERY HIGH - Network attack detection
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 12.1.2: CAN Bus Flooding [S] 🔴
+#### Test 12.1.2: CAN Bus Flooding \[S\] 🔴
+
 ```
 Risk: HIGH - Can lock up ECU
 Duration: 5-10 seconds MAX
@@ -745,7 +775,8 @@ ML Training Value: HIGH - DOS attack detection
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 12.1.3: Fault Code Injection via CAN [S] 🟢
+#### Test 12.1.3: Fault Code Injection via CAN \[S\] 🟢
+
 ```
 Risk: LOW
 Duration: 1-2 minutes
@@ -769,11 +800,12 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ---
 
-## 13. ECU MANIPULATION TESTS [ECU]
+## 13. ECU MANIPULATION TESTS \[ECU\]
 
 ### 13.1 ECU Parameter Adjustments
 
 #### Test 13.1.1: ECU Reset / Clear Adaptations 🟢
+
 ```
 Risk: LOW
 Duration: 5 minutes
@@ -797,6 +829,7 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
 #### Test 13.1.2: ECU Reflash with Modified Parameters 🔴
+
 ```
 Risk: HIGH - Can brick ECU if done wrong
 Duration: 30-60 minutes
@@ -828,6 +861,7 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ### 14.1 Combined Fault Tests
 
 #### Test 14.1.1: MAF + O2 Sensor Disconnect 🟡
+
 ```
 Risk: MODERATE
 Duration: 1-2 minutes
@@ -850,6 +884,7 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
 #### Test 14.1.2: Vacuum Leak + Injector Disconnect 🔴
+
 ```
 Risk: HIGH
 Duration: 30-60 seconds MAX
@@ -875,9 +910,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 15. INTERMITTENT FAULT SIMULATION ⚡
 
-### 15.1 Intermittent Connection Tests [E]
+### 15.1 Intermittent Connection Tests \[E\]
 
 #### Test 15.1.1: Vibration-Induced Connector Fault 🟡
+
 ```
 Risk: MODERATE
 Duration: 3-5 minutes
@@ -901,7 +937,8 @@ ML Training Value: VERY HIGH - Intermittent detection crucial
 Status: ☐ Not Tested | ☐ Complete | Date: ___________
 ```
 
-#### Test 15.1.2: Temperature-Induced Sensor Failure [M] 🟡
+#### Test 15.1.2: Temperature-Induced Sensor Failure \[M\] 🟡
+
 ```
 Risk: MODERATE
 Duration: 10-15 minutes
@@ -927,9 +964,10 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ## 16. BRAKE SYSTEM TESTS 🛑
 
-### 16.1 ABS Sensor Tests [E]
+### 16.1 ABS Sensor Tests \[E\]
 
 #### Test 16.1.1: Wheel Speed Sensor Disconnect 🟢
+
 ```
 Risk: LOW
 Duration: 2-3 minutes (vehicle stationary)
@@ -959,7 +997,8 @@ Status: ☐ Not Tested | ☐ Complete | Date: ___________
 
 ### 17.1 New Tests (Add Your Discoveries Here!)
 
-#### Test 17.1.1: [Your Test Name] ___
+#### Test 17.1.1: \[Your Test Name\] \__\_
+
 ```
 Risk: ___
 Duration: ___
@@ -983,6 +1022,7 @@ Notes: ___
 ## 📊 TEST EXECUTION TRACKER
 
 ### Completed Tests by Category:
+
 - Air Intake: ☐☐☐☐ (0/4)
 - Oxygen Sensors: ☐☐☐☐ (0/4)
 - Throttle/Accel: ☐☐ (0/2)

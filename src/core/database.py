@@ -1,9 +1,3 @@
-import sys
-from pathlib import Path
-
-# Add project root to path so 'src' can be imported when running directly
-sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
-
 from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, ForeignKey, JSON
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 from datetime import datetime
@@ -23,6 +17,7 @@ class Vehicle(Base):
     model = Column(String)
     year = Column(Integer)
     created_at = Column(DateTime, default=datetime.utcnow)
+    baseline_confirmed_at = Column(DateTime, nullable=True)
     
     # Relationships
     scans = relationship("DiagnosticScan", back_populates="vehicle", cascade="all, delete-orphan")

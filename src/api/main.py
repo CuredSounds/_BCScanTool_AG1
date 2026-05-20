@@ -1,4 +1,5 @@
-from fastapi import FastAPI, HTTPException, UploadFile, File
+from fastapi import FastAPI, HTTPException, UploadFile, File, Security, Depends
+from fastapi.security.api_key import APIKeyHeader
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import json
@@ -6,11 +7,11 @@ import os
 import shutil
 import subprocess
 import sys
+import logging
 from pydantic import BaseModel
 import requests
 
 from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
 
 from src.core.database import SessionLocal, Vehicle, RepairLog, init_db
 from datetime import datetime
@@ -21,6 +22,29 @@ from src.core.diagnostic_engine import DiagnosticEngine
 from src.core.predictive_analytics import PredictiveAnalytics
 from src.core.gdrive_sync import backup_to_cloud
 import joblib
+
+logger = logging.getLogger("BCScanTool.API")
+
+api_key_header = APIKeyHeader(name=config.API_KEY_NAME, auto_error=False)
+
+async def get_api_key(api_key_header: str = Depends(api_key_header)):
+    if api_key_header == config.API_KEY:
+        return api_key_header
+    else:
+        raise HTTPException(status_code=403, detail="Could not validate API Key")
+
+def sanitize_chat_input(text: str) -> str:
+    """Basic sanitization for chat prompts."""
+    # Remove common prompt injection markers
+    forbidden = ["System:", "Assistant:", "User:", "###", "ignore previous instructions"]
+    clean_text = text
+    for word in forbidden:
+        clean_text = clean_text.replace(word, "")
+    return clean_text.strip()[:500]
+
+# Allowed file extensions for upload
+ALLOWED_EXTENSIONS = {'.x431', '.csv'}
+MAX_UPLOAD_SIZE_MB = 50
 
 def load_ml_models():
     """Load the trained machine learning models."""
@@ -37,22 +61,22 @@ def load_ml_models():
         try:
             import onnxruntime as ort
             onnx_session = ort.InferenceSession(str(onnx_path))
-            print(f"Loaded MATLAB ONNX Model: {onnx_path.name}")
+            logger.info(f"Loaded MATLAB ONNX Model: {onnx_path.name}")
         except ImportError:
-            print("ONNX file found but onnxruntime is not installed.")
+            logger.warning("ONNX file found but onnxruntime is not installed.")
         except Exception as e:
-            print(f"Failed to load ONNX model: {e}")
+            logger.error(f"Failed to load ONNX model: {e}")
             
     keras_model = None
     if keras_path.exists():
         try:
             import tensorflow as tf
             keras_model = tf.keras.models.load_model(str(keras_path))
-            print(f"Loaded Python Keras Model: {keras_path.name}")
+            logger.info(f"Loaded Python Keras Model: {keras_path.name}")
         except ImportError:
-            print("TensorFlow not installed. Cannot load Keras model.")
+            logger.warning("TensorFlow not installed. Cannot load Keras model.")
         except Exception as e:
-            print(f"Failed to load Keras model: {e}")
+            logger.error(f"Failed to load Keras model: {e}")
             
     return supervised, anomaly, onnx_session, keras_model
 
@@ -61,10 +85,10 @@ VEHICLE_SPECIFIC_MODELS = {}
 
 app = FastAPI(title="BC Scan Tool API", version="1.0.0")
 
-# Enable CORS for web dashboard
+# CORS: restrict to local dashboard only (not wide-open *)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:8501", "http://127.0.0.1:8501"],  # Streamlit default
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -87,7 +111,7 @@ def load_baselines():
 def health_check():
     return {"status": "ok"}
 
-@app.get("/api/vehicles")
+@app.get("/api/vehicles", dependencies=[Depends(get_api_key)])
 def get_vehicles():
     """Return a list of all vehicles and their baselines."""
     baselines = load_baselines()
@@ -101,34 +125,53 @@ def get_vehicles():
         })
     return vehicles
 
-@app.post("/api/upload")
+@app.post("/api/upload", dependencies=[Depends(get_api_key)])
 async def upload_diagnostic_file(file: UploadFile = File(...)):
     """Upload and process a raw .x431 or .csv diagnostic file."""
+    # Validate file extension
+    ext = Path(file.filename).suffix.lower()
+    if ext not in ALLOWED_EXTENSIONS:
+        raise HTTPException(status_code=400,
+                            detail=f"Invalid file type '{ext}'. Allowed: {ALLOWED_EXTENSIONS}")
+
+    # Sanitize filename — strip path components to prevent directory traversal
+    safe_filename = Path(file.filename).name
+    if not safe_filename or safe_filename.startswith('.'):
+        raise HTTPException(status_code=400, detail="Invalid filename")
+
     upload_dir = config.DATA_DIR / "raw"
     upload_dir.mkdir(parents=True, exist_ok=True)
     
-    file_path = upload_dir / file.filename
+    file_path = upload_dir / safe_filename
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
+
+    logger.info(f"Uploaded file: {safe_filename} ({file_path.stat().st_size} bytes)")
         
     # If it's an x431 file, convert it to CSV first
-    if file.filename.endswith(".x431"):
+    if ext == ".x431":
         try:
             from src.core.x431_parser import convert_file
             out_csv = upload_dir / f"{file_path.stem}.csv"
             convert_file(file_path, out_csv, clean=True)
         except Exception as e:
+            logger.error(f"Failed to convert .x431: {e}")
             raise HTTPException(status_code=500, detail=f"Failed to convert .x431: {e}")
             
-    # Trigger ML Training & Ingestion Pipeline asynchronously
+    # Trigger ML pipeline in background
     try:
-        subprocess.Popen([sys.executable, str(config.PROJECT_ROOT / "scripts" / "run_full_analysis.py")])
+        # Use subprocess.Popen without invalid timeout arg
+        # The script itself should handle its own timeouts
+        proc = subprocess.Popen(
+            [sys.executable, str(config.PROJECT_ROOT / "scripts" / "run_full_analysis.py")]
+        )
+        logger.info(f"Triggered background ML pipeline (PID: {proc.pid})")
     except Exception as e:
-        print("Failed to trigger ML pipeline:", e)
+        logger.error(f"Failed to trigger ML pipeline: {e}")
         
-    return {"status": "success", "filename": file.filename, "message": "File uploaded and ML processing started"}
+    return {"status": "success", "filename": safe_filename, "message": "File uploaded and ML processing started"}
 
-@app.get("/api/vehicles/{vin}/diagnostics")
+@app.get("/api/vehicles/{vin}/diagnostics", dependencies=[Depends(get_api_key)])
 def get_vehicle_diagnostics(vin: str):
     """Run diagnostics and predictions for a specific vehicle."""
     df = load_processed_data()
@@ -176,7 +219,18 @@ def get_vehicle_diagnostics(vin: str):
     issues = diag_engine.analyze()
     
     # Run predictive analytics
-    predictor = PredictiveAnalytics(vehicle_data)
+    # Fetch baseline confirmation date from DB
+    baseline_dates = {}
+    db = SessionLocal()
+    try:
+        vehicles = db.query(Vehicle).all()
+        for v in vehicles:
+            if v.baseline_confirmed_at:
+                baseline_dates[v.vin] = v.baseline_confirmed_at
+    finally:
+        db.close()
+
+    predictor = PredictiveAnalytics(vehicle_data, baseline_confirmed_dates=baseline_dates)
     predictions = predictor.analyze() or []
     health_scores = predictor.health_scores
     
@@ -186,7 +240,7 @@ def get_vehicle_diagnostics(vin: str):
     # 1. Supervised Random Forest
     if SUPERVISED_MODEL:
         try:
-            feature_cols = SUPERVISED_MODEL['features']
+            feature_cols = SUPERVISED_MODEL.get('features', SUPERVISED_MODEL.get('feature_columns', []))
             pipeline = SUPERVISED_MODEL['pipeline']
             label_encoder = SUPERVISED_MODEL['label_encoder']
             
@@ -207,12 +261,12 @@ def get_vehicle_diagnostics(vin: str):
                     "confidence": "High"
                 })
         except Exception as e:
-            print(f"Supervised ML Error: {e}")
+            logger.error(f"Supervised ML Error: {e}", exc_info=True)
 
     # 2. Unsupervised Isolation Forest
     if ANOMALY_MODEL:
         try:
-            feature_cols = ANOMALY_MODEL['features']
+            feature_cols = ANOMALY_MODEL.get('features', ANOMALY_MODEL.get('feature_columns', []))
             pipeline = ANOMALY_MODEL['pipeline']
             
             for col in feature_cols:
@@ -232,7 +286,7 @@ def get_vehicle_diagnostics(vin: str):
                     "confidence": "Medium"
                 })
         except Exception as e:
-            print(f"Anomaly ML Error: {e}")
+            logger.error(f"Anomaly ML Error: {e}", exc_info=True)
             
     # 3. Deep Learning Models (MATLAB ONNX + Python Keras)
     numeric_cols = [
@@ -287,7 +341,7 @@ def get_vehicle_diagnostics(vin: str):
             if KERAS_MODEL:
                 # Input expected: [BatchSize=1, SequenceLength, Features=21]
                 X_keras = np.expand_dims(X_array, axis=0)
-                keras_pred = KERAS_MODEL.predict(X_keras, verbose=0)[0]
+                keras_pred = KERAS_MODEL(X_keras, training=False).numpy()[0]
                 # Output shape: [SequenceLength, 1]
                 latest_k_pred = float(keras_pred[-1, 0])
                 
@@ -309,7 +363,7 @@ def get_vehicle_diagnostics(vin: str):
                     "confidence": "High"
                 })
         except Exception as e:
-            print(f"Deep Learning Inference Error: {e}")
+            logger.error(f"Deep Learning Inference Error: {e}", exc_info=True)
             
     # 4. Vehicle-Specific Deep Learning Autoencoder
     if v_make and v_model and v_make != "Unknown":
@@ -354,7 +408,7 @@ def get_vehicle_diagnostics(vin: str):
                             recent_norm = (recent_data - mins) / ranges
                             
                             X_vs = np.expand_dims(recent_norm, axis=0)
-                            reconstruction = vs_model.predict(X_vs, verbose=0)
+                            reconstruction = vs_model(X_vs, training=False).numpy()
                             
                             mse = float(np.mean(np.square(X_vs - reconstruction)))
                             
@@ -376,7 +430,7 @@ def get_vehicle_diagnostics(vin: str):
                                 "confidence": "High"
                             })
             except Exception as e:
-                print(f"Vehicle-Specific Autoencoder Error: {e}")
+                logger.error(f"Vehicle-Specific Autoencoder Error: {e}", exc_info=True)
     
     score_data = health_scores.get(vin, {"score": 100, "grade": "A", "status": "Unknown"})
     
@@ -390,7 +444,7 @@ def get_vehicle_diagnostics(vin: str):
         "scans_count": len(vehicle_data)
     }
 
-@app.get("/api/vehicles/{vin}/topology")
+@app.get("/api/vehicles/{vin}/topology", dependencies=[Depends(get_api_key)])
 def get_vehicle_topology(vin: str):
     """Get the network topology status of all vehicle modules."""
     df = load_processed_data()
@@ -439,11 +493,34 @@ def get_vehicle_topology(vin: str):
         "modules": modules
     }
 
+class BaselineRequest(BaseModel):
+    vin: str
+    confirmed_at: datetime = None
+
+@app.post("/api/vehicles/baseline", dependencies=[Depends(get_api_key)])
+def confirm_baseline(request: BaselineRequest):
+    """Confirm a healthy state for the vehicle to use as a baseline."""
+    db = SessionLocal()
+    try:
+        vehicle = db.query(Vehicle).filter(Vehicle.vin == request.vin).first()
+        if not vehicle:
+            vehicle = Vehicle(vin=request.vin, make="Unknown", model="Unknown", year=0)
+            db.add(vehicle)
+        
+        vehicle.baseline_confirmed_at = request.confirmed_at or datetime.utcnow()
+        db.commit()
+        return {"status": "success", "message": f"Baseline confirmed for {request.vin} at {vehicle.baseline_confirmed_at}"}
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
 class RepairLogRequest(BaseModel):
     vin: str
     description: str
 
-@app.post("/api/repairs")
+@app.post("/api/repairs", dependencies=[Depends(get_api_key)])
 def log_repair(request: RepairLogRequest):
     """Log a repair to reset the AI baseline."""
     db = SessionLocal()
@@ -474,10 +551,11 @@ class ChatRequest(BaseModel):
     vin: str
     context_data: dict
 
-@app.post("/api/chat")
+@app.post("/api/chat", dependencies=[Depends(get_api_key)])
 def chat_with_ai(request: ChatRequest):
     """Chat with the AI mechanic using Ollama."""
     # Build a context string from the diagnostics
+    clean_message = sanitize_chat_input(request.message)
     issues = request.context_data.get("issues", [])
     predictions = request.context_data.get("predictions", [])
     
@@ -495,7 +573,7 @@ Predictive Alerts:
 
 Your goal is to answer the user's questions clearly, concisely, and accurately based on the provided vehicle data. Provide actionable mechanical advice, potential repair costs, or troubleshooting steps. Do not use complex jargon without explaining it.
 """
-    prompt = f"{system_prompt}\\n\\nUser: {request.message}\\nAssistant:"
+    prompt = f"{system_prompt}\\n\\nUser: {clean_message}\\nAssistant:"
     
     # Attempt to use local Ollama
     try:
@@ -512,7 +590,7 @@ Your goal is to answer the user's questions clearly, concisely, and accurately b
     except Exception as e:
         return {"response": "I could not connect to your local Ollama instance. Please make sure Ollama is running (`ollama serve`) and the `llama3` model is installed (`ollama pull llama3`). If you intended to use Google Gemini, please ensure your API key is configured."}
 
-@app.post("/api/cloud_sync")
+@app.post("/api/cloud_sync", dependencies=[Depends(get_api_key)])
 def sync_to_cloud():
     """Trigger a Google Drive backup sync of the database and processed data."""
     result = backup_to_cloud()

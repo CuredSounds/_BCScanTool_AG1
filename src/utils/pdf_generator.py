@@ -127,7 +127,7 @@ def generate_health_report(diag_data: dict) -> bytes:
     if not issues:
         pdf.set_font('Helvetica', 'I', 10)
         pdf.set_text_color(40, 167, 69)
-        pdf.cell(0, 8, '  ✓ No active Diagnostic Trouble Codes detected in this scan.', 0, 1, 'L')
+        pdf.cell(0, 8, '  [OK] No active Diagnostic Trouble Codes detected in this scan.', 0, 1, 'L')
         pdf.ln(3)
     else:
         for idx, iss in enumerate(issues[:8]):  # Show up to top 8 issues
@@ -191,7 +191,7 @@ def generate_health_report(diag_data: dict) -> bytes:
     if not predictions:
         pdf.set_font('Helvetica', 'I', 10)
         pdf.set_text_color(40, 167, 69)
-        pdf.cell(0, 8, '  ✓ No component degradation anomalies predicted by the AI model.', 0, 1, 'L')
+        pdf.cell(0, 8, '  [OK] No component degradation anomalies predicted by the AI model.', 0, 1, 'L')
     else:
         for pred in predictions[:6]:
             if pdf.get_y() > 255:

@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 from scipy import stats
 from scipy.interpolate import interp1d
 import warnings
+from src import config
 warnings.filterwarnings('ignore')
 
 
@@ -17,16 +18,18 @@ class PredictiveAnalytics:
     Predictive maintenance and failure forecasting engine
     """
 
-    def __init__(self, pdf_data, csv_data=None):
+    def __init__(self, pdf_data, csv_data=None, baseline_confirmed_dates=None):
         """
         Initialize predictive analytics engine
 
         Args:
             pdf_data: Historical PDF diagnostic snapshots
             csv_data: Time-series sensor data (optional)
+            baseline_confirmed_dates: Dict of VIN -> datetime of confirmed healthy state
         """
         self.pdf_data = pdf_data
         self.csv_data = csv_data
+        self.baseline_confirmed_dates = baseline_confirmed_dates or {}
         self.predictions = []
         self.health_scores = {}
         self.baselines = {}
@@ -78,8 +81,24 @@ class PredictiveAnalytics:
                 vehicle_data['test_time_dt'] = pd.to_datetime(vehicle_data['test_time'], errors='coerce')
                 vehicle_data = vehicle_data.sort_values('test_time_dt')
 
-            # Get first few scans as baseline (when vehicle was healthy)
-            baseline_scans = vehicle_data.head(min(5, len(vehicle_data) // 2))
+            # Use confirmed baseline date if available, else first 5 scans
+            confirmed_date = self.baseline_confirmed_dates.get(vin)
+            if confirmed_date and 'test_time_dt' in vehicle_data.columns:
+                # Scans around the confirmed date (+/- 7 days) are used as baseline
+                # This ensures we use data when the vehicle was known to be healthy
+                mask = (vehicle_data['test_time_dt'] >= confirmed_date - timedelta(days=7)) & \
+                       (vehicle_data['test_time_dt'] <= confirmed_date + timedelta(days=7))
+                baseline_scans = vehicle_data[mask]
+                
+                if baseline_scans.empty:
+                    # Fallback to the scan closest to confirmed date
+                    idx = (vehicle_data['test_time_dt'] - confirmed_date).abs().idxmin()
+                    baseline_scans = vehicle_data.loc[[idx]]
+                
+                print(f"  Using confirmed baseline for {vin} around {confirmed_date}")
+            else:
+                baseline_scans = vehicle_data.head(min(5, len(vehicle_data) // 2))
+                print(f"  Using heuristic baseline (first {len(baseline_scans)} scans) for {vin}")
 
             baseline = {}
 
@@ -193,13 +212,16 @@ class PredictiveAnalytics:
         slope, intercept, r_value, p_value, std_err = stats.linregress(x, y)
 
         # Rising temperature trend
-        if slope > 3 and p_value < 0.1:  # More than 3°F increase per scan
+        slope_threshold = 2 if config.TEMP_UNIT == "celsius" else 3
+        unit = "°C" if config.TEMP_UNIT == "celsius" else "°F"
+
+        if slope > slope_threshold and p_value < 0.1:
             self.predictions.append({
                 'type': 'TREND',
                 'severity': 'WARNING',
                 'category': 'Cooling System',
                 'issue': 'Engine Running Hotter Over Time',
-                'details': f'Temperature increasing by {slope:.1f}°F per scan',
+                'details': f'Temperature increasing by {slope:.1f}{unit} per scan',
                 'prediction': 'Cooling system degradation - may overheat soon',
                 'confidence': f'{min(abs(r_value) * 100, 100):.0f}%',
                 'vin': vin
@@ -487,15 +509,16 @@ class PredictiveAnalytics:
         print(f"Predictions exported to: {output_path}")
 
 
-def run_predictive_analytics(pdf_data, csv_data=None):
+def run_predictive_analytics(pdf_data, csv_data=None, baseline_confirmed_dates=None):
     """
     Main entry point for predictive analytics
 
     Args:
         pdf_data: DataFrame with PDF diagnostic snapshots
         csv_data: DataFrame with time-series sensor data (optional)
+        baseline_confirmed_dates: Dict of VIN -> datetime
     """
-    engine = PredictiveAnalytics(pdf_data, csv_data)
+    engine = PredictiveAnalytics(pdf_data, csv_data, baseline_confirmed_dates)
     predictions = engine.analyze()
 
     # Export predictions

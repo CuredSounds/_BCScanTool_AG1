@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 from datetime import datetime
 import sys
 from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
+from src import config
 from src.utils.pdf_generator import generate_health_report
 
 # Configure page
@@ -56,11 +56,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 API_BASE_URL = "http://localhost:8080/api"
+HEADERS = {config.API_KEY_NAME: config.API_KEY}
 
 @st.cache_data(ttl=60)
 def fetch_vehicles():
     try:
-        response = requests.get(f"{API_BASE_URL}/vehicles")
+        response = requests.get(f"{API_BASE_URL}/vehicles", headers=HEADERS)
         response.raise_for_status()
         return response.json()
     except Exception as e:
@@ -70,7 +71,7 @@ def fetch_vehicles():
 @st.cache_data(ttl=60)
 def fetch_diagnostics(vin: str):
     try:
-        response = requests.get(f"{API_BASE_URL}/vehicles/{vin}/diagnostics")
+        response = requests.get(f"{API_BASE_URL}/vehicles/{vin}/diagnostics", headers=HEADERS)
         response.raise_for_status()
         return response.json()
     except Exception as e:
@@ -80,7 +81,7 @@ def fetch_diagnostics(vin: str):
 @st.cache_data(ttl=60)
 def fetch_topology(vin: str):
     try:
-        response = requests.get(f"{API_BASE_URL}/vehicles/{vin}/topology")
+        response = requests.get(f"{API_BASE_URL}/vehicles/{vin}/topology", headers=HEADERS)
         response.raise_for_status()
         return response.json()
     except Exception:
@@ -141,7 +142,7 @@ with st.sidebar:
             with st.spinner("Uploading and analyzing..."):
                 try:
                     files = {"file": (uploaded_file.name, uploaded_file.getvalue(), uploaded_file.type)}
-                    res = requests.post(f"{API_BASE_URL}/upload", files=files)
+                    res = requests.post(f"{API_BASE_URL}/upload", files=files, headers=HEADERS)
                     if res.status_code == 200:
                         st.success("File processed! ML pipelines are retraining in the background.")
                         st.cache_data.clear()
@@ -160,7 +161,7 @@ with st.sidebar:
                     res = requests.post(f"{API_BASE_URL}/repairs", json={
                         "vin": selected_vin,
                         "description": repair_desc
-                    })
+                    }, headers=HEADERS)
                     if res.status_code == 200:
                         st.success("Repair logged! Baseline reset.")
                         st.cache_data.clear()
@@ -172,13 +173,27 @@ with st.sidebar:
         else:
             st.warning("Please enter a repair description.")
 
+    if st.button("✅ Confirm Current State as Healthy Baseline", use_container_width=True):
+        with st.spinner("Confirming baseline..."):
+            try:
+                res = requests.post(f"{API_BASE_URL}/vehicles/baseline", json={
+                    "vin": selected_vin
+                }, headers=HEADERS)
+                if res.status_code == 200:
+                    st.success("Baseline confirmed! Predictive models will use this as a reference.")
+                    st.cache_data.clear()
+                else:
+                    st.error(f"Failed to confirm baseline: {res.text}")
+            except Exception as e:
+                st.error(f"Connection error: {e}")
+
     st.markdown("---")
     st.subheader("☁️ Cloud Backup")
     st.markdown("Sync diagnostic DB to Google Drive.")
     if st.button("Force Cloud Sync", use_container_width=True):
         with st.spinner("Compressing and uploading..."):
             try:
-                res = requests.post(f"{API_BASE_URL}/cloud_sync")
+                res = requests.post(f"{API_BASE_URL}/cloud_sync", headers=HEADERS)
                 if res.status_code == 200:
                     st.success("Backup successfully synced to Google Drive!")
                 else:
@@ -327,7 +342,7 @@ if diag_data:
                             "message": prompt,
                             "vin": selected_vin,
                             "context_data": diag_data
-                        })
+                        }, headers=HEADERS)
                         res.raise_for_status()
                         response = res.json().get("response", "I'm sorry, I couldn't generate a response.")
                     except Exception as e:

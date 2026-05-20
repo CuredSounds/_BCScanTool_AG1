@@ -8,6 +8,8 @@ import numpy as np
 import json
 import os
 from typing import Dict, List
+from src import config
+from src.core.utils import f_to_c, c_to_f
 
 
 class VehicleBaseline:
@@ -161,8 +163,17 @@ class BaselineManager:
         if 'coolant_temp_f' in pdf_data.columns:
             temp_data = pd.to_numeric(baseline_data['coolant_temp_f'], errors='coerce').dropna()
             if len(temp_data) > 0:
-                operating_temp = temp_data[temp_data > 160]  # Operating temperature
+                # Use centralized Celsius thresholds, but data might be F
+                temp_limit = config.TEMP_COLD_C
+                if config.TEMP_UNIT == "celsius":
+                    # If data is labelled _f but system is C, convert it
+                    operating_temp = temp_data.apply(lambda x: f_to_c(x) if x > 120 else x)
+                    operating_temp = operating_temp[operating_temp > config.TEMP_COLD_C]
+                else:
+                    operating_temp = temp_data[temp_data > c_to_f(config.TEMP_COLD_C)]
+
                 if len(operating_temp) > 0:
+                    unit = "°C" if config.TEMP_UNIT == "celsius" else "°F"
                     baseline.set_baseline(
                         'operating_temp',
                         operating_temp.min(),
@@ -170,7 +181,7 @@ class BaselineManager:
                         operating_temp.mean(),
                         operating_temp.std()
                     )
-                    print(f"  ✓ Operating temp baseline: {operating_temp.mean():.0f}°F (±{operating_temp.std():.0f})")
+                    print(f"  ✓ Operating temp baseline: {operating_temp.mean():.0f}{unit} (±{operating_temp.std():.0f})")
 
         # Misfire baseline (should be low/zero when healthy)
         misfire_cols = [c for c in pdf_data.columns if 'misfire_history' in c]
@@ -231,9 +242,12 @@ class BaselineManager:
         # Check temperature
         if 'coolant_temp_f' in current_data:
             temp = current_data.get('coolant_temp_f')
-            if temp and temp > 160:  # Operating temp
-                result = baseline.check_parameter('operating_temp', temp)
-                comparisons['operating_temp'] = result
+            if temp:
+                # Normalize to Celsius for comparison if needed
+                temp_val = f_to_c(temp) if temp > 120 else temp 
+                if temp_val > config.TEMP_COLD_C:  # Operating temp
+                    result = baseline.check_parameter('operating_temp', temp)
+                    comparisons['operating_temp'] = result
 
         # Check misfires
         misfire_cols = [k for k in current_data.keys() if 'misfire_history' in str(k)]

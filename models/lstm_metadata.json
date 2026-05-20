@@ -1,0 +1,52 @@
+{
+  "input_dim": 32,
+  "hidden_dim": 64,
+  "num_layers": 2,
+  "num_classes": 3,
+  "classes": [
+    "fault_alternator",
+    "healthy",
+    "healthy_ac_on"
+  ],
+  "feature_columns": [
+    "Engine Speed [rpm]",
+    "Av Engine Speed of All Cyl [rpm]",
+    "Calculate Load [%]",
+    "Coolant Temp [degree C]",
+    "Intake Air [degree C]",
+    "MAF [gm/s]",
+    "Atmosphere Pressure [kPa]",
+    "AF Lambda (Bank1 Sensor1)",
+    "AF Lambda (Bank2 Sensor1)",
+    "AFS Current (Bank1 Sensor1) [mA]",
+    "AFS Current (Bank2 Sensor1) [mA]",
+    "AFS Voltage (Bank1 Sensor1) [V]",
+    "AFS Voltage (Bank2 Sensor1) [V]",
+    "O2S B1S2 [V]",
+    "O2S B2S2 [V]",
+    "Short FT (Bank1 Sensor1) [%]",
+    "Short FT (Bank2 Sensor1) [%]",
+    "Long FT (Bank1 Sensor1) [%]",
+    "Long FT (Bank2 Sensor1) [%]",
+    "IGN Advance [deg]",
+    "All Cylinders Misfire Count",
+    "Cylinder Count1 Misfire Count",
+    "Cylinder Count2 Misfire Count",
+    "Cylinder Count3 Misfire Count",
+    "Cylinder Count4 Misfire Count",
+    "Cylinder Count5 Misfire Count",
+    "Cylinder Count6 Misfire Count",
+    "Vehicle Speed [km/h]",
+    "Throttle Sensor Position [%]",
+    "Accelerator Position [%]",
+    "Battery Voltage [V]",
+    "+BM Voltage [V]"
+  ],
+  "scaler_path": "models/lstm_scaler.joblib",
+  "trained_at": "2026-05-20T04:19:39.564941",
+  "window_size": 60,
+  "performance": {
+    "accuracy_rf": 0.7283950617283951,
+    "accuracy_lstm": 0.7561728395061729
+  }
+}
