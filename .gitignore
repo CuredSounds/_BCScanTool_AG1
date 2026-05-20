@@ -187,3 +187,4 @@ credentials.json
 token.json
 data/csv/Archive 2.zip
 backups.zip
+*.zip
