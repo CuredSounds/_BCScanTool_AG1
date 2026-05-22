@@ -1,0 +1,55 @@
+{
+  "patch_metadata": {
+    "patch_id": "CS_2026_05_A01",
+    "name": "Tacoma Twilight Drone",
+    "creator": "CuredSounds AI Engine v0.1",
+    "base_engine_type": "hybrid_wavetable_granular"
+  },
+  "hardware_state": {
+    "digital_potentiometers": {
+      "digipot_0_cutoff": 142,
+      "digipot_1_resonance": 64,
+      "digipot_2_drive": 198,
+      "digipot_3_vca_gain": 255
+    },
+    "control_voltages_dac_mv": {
+      "cv_out_ch1_pitch": 2400,
+      "cv_out_ch2_mod": 1250
+    }
+  },
+  "software_parameters": {
+    "wavetable_index": 42,
+    "granular_grain_size_ms": 35.0,
+    "granular_spray": 0.15,
+    "fx_delay_feedback": 0.68,
+    "fx_reverb_mix": 0.45
+  },
+  "inter_module_mood_protocol": {
+    "energy": 0.35,
+    "valence": 0.72,
+    "policy": "sympathetic_energy_inverted_valency"
+  },
+  "sensor_input_vectors": {
+    "biofeedback_state": {
+      "heart_rate_bpm": 72.5,
+      "hrv_rmssd_ms": 48.2,
+      "eeg_alpha_theta_ratio": 1.15,
+      "biological_tension_score": 0.31
+    },
+    "vehicle_pid_map": {
+      "pid_0x11_throttle_position_pct": 22.4,
+      "pid_0x05_engine_coolant_temp_c": 88.0,
+      "pid_0x0D_vehicle_speed_kph": 65.0,
+      "pid_0x0C_engine_rpm": 1850
+    }
+  },
+  "acoustic_analysis_targets": {
+    "spectral_centroid_hz": 1450.8,
+    "zero_crossing_rate": 0.045,
+    "perceived_tags": {
+      "brightness": 0.42,
+      "roughness": 0.68,
+      "warmth": 0.85
+    }
+  }
+}
